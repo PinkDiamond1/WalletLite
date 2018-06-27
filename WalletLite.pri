@@ -78,7 +78,8 @@ HEADERS += ./goopal.h \
     ./quotationlistmodel.h \
     ./quotationlistview.h \
     ./thirddatamgr.h \
-    ./functionbarbtn.h
+    ./functionbarbtn.h \
+    ./macro.h
 
 SOURCES += ./goopal.cpp \
     ./main.cpp \

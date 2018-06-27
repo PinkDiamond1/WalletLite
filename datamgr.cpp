@@ -792,7 +792,7 @@ QString DataMgr::getAddrAccont(QString addr)
 
 void DataMgr::walletListAccounts()
 {
-	auto& accountInfos = DataBase::getInstance()->queryAllAccount();
+    auto accountInfos = DataBase::getInstance()->queryAllAccount();
 	_account_info_map.clear();
 	for (int i = 0; i < accountInfos.size(); i++)
 	{
