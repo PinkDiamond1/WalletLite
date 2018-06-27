@@ -13,6 +13,7 @@
 #include <QLayout>
 #include <QClipboard>
 
+#include "macro.h"
 #include "misc.h"
 #include "BillPage.h"
 #include "ui_billpage.h"

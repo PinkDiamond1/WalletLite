@@ -3,11 +3,13 @@
 #include "goopal.h"
 #include "debug_log.h"
 #include "commondialog.h"
+#include "datamgr.h"
+#include "macro.h"
+
 #include <QTimer>
 #include <QDebug>
 #include <QMovie>
 #include <QDesktopServices>
-#include "datamgr.h"
 
 WaitingForSync::WaitingForSync(QWidget *parent) :
     QWidget(parent),

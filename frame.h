@@ -53,7 +53,7 @@ private:
 	void showFunctionBar();
 
 public slots:
-    void refresh();
+	void getAccountInfo();
     void autoRefresh();
 	void autoRefreshQuotation();
 
@@ -62,7 +62,6 @@ public slots:
 
     void setLanguage(QString);
 
-	void walletListAccounts();
     void walletAccountBalance();
     void walletLock();
 	void assetTypeGet();
@@ -89,7 +88,6 @@ private slots:
     void unlock();
     void updateTimer();
     void settingSaved();
-    void privateKeyImported();
 
     void jsonDataUpdated(QString id);
     void showTransferPageWithAddress(QString);
@@ -103,7 +101,6 @@ private:
 	void retranslateTrayIconUi();
 	void createTrayIcon();
 
-	void getAccountInfo();
 	void startTimerForAutoRefresh(); // 自动刷新
 	void startTimerForQuotation();
 

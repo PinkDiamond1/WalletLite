@@ -173,12 +173,11 @@ AccountPage::~AccountPage()
 void AccountPage::importAccount()
 {
 	ImportDialog importDialog;
-	importDialog.pop();
-
-	updatePage();
-	updateAccountCountLabel();
-
-	emit refreshAccountInfo();
+	if (importDialog.pop())
+	{
+		updatePage();
+		emit refreshAccountInfo();
+	}
 }
 
 void AccountPage::addAccount()
@@ -202,14 +201,13 @@ void AccountPage::addAccount()
 			}
 
 			updatePage();
+			emit refreshAccountInfo();
 		}
 	}
 }
 
 void AccountPage::updateAccountList()
 {
-	DataMgr::getInstance()->walletListAccounts();
-
 	accountNameList = DataMgr::getInstance()->getAccountInfo()->keys();
 	if (accountNameList.size() == 0)  // 如果还没有账户
 	{
@@ -365,8 +363,8 @@ void AccountPage::updateAccountCountLabel()
 
 void AccountPage::updatePage()
 {
-	updateAccountCountLabel();
 	updateAccountList();
+	updateAccountCountLabel();
 	detailWidget->setAccount(detailWidget->accountName);
 }
 
@@ -384,7 +382,7 @@ void AccountPage::renameAccount(QString name)
 	if (!newName.isEmpty() && newName != name)
 	{
 		detailWidget->accountName = newName;
-		emit newAccount();
+		emit refreshAccountInfo();
 	}
 }
 
@@ -393,11 +391,6 @@ void AccountPage::deleteAccount(QString name)
 	DeleteAccountDialog deleteACcountDialog(name);
 	if (deleteACcountDialog.pop())
 	{
-		if (DataMgr::getInstance()->getCurrentAccount() == name)
-		{
-			DataMgr::getInstance()->setCurrentAccount("");
-		}
-
 		updatePage();
 
 		CommonDialog tipDialog(CommonDialog::OkOnly);

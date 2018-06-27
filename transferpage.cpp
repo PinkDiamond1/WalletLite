@@ -8,6 +8,7 @@
 #include <windows.h>
 #endif
 
+#include "macro.h"
 #include "datamgr.h"
 #include "transferpage.h"
 #include "ui_transferpage.h"

@@ -4,6 +4,7 @@
 #include "commondialog.h"
 #include "debug_log.h"
 #include "datamgr.h"
+#include "macro.h"
 #include "extra/dynamicmove.h"
 
 #include <QPainter>

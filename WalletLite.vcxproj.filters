@@ -1629,6 +1629,9 @@
     <ClInclude Include="functionbarbtn.h">
       <Filter>Header Files\wallet-view</Filter>
     </ClInclude>
+    <ClInclude Include="macro.h">
+      <Filter>Header Files\blockchain</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\fc\utf8\ReleaseNotes">

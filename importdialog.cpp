@@ -47,10 +47,12 @@ ImportDialog::~ImportDialog()
     delete ui;
 }
 
-void ImportDialog::pop()
+bool ImportDialog::pop()
 {
     move(0,0);
     exec();
+
+	return yesOrNO;
 }
 
 void ImportDialog::on_cancelBtn_clicked()
@@ -100,7 +102,9 @@ void ImportDialog::on_importBtn_clicked()
     QString accountName;
 
     if(!DataMgr::getInstance()->walletCheckPriKeyValid(privatekey))
-    {
+	{
+		yesOrNO = false;
+
         CommonDialog commonDialog(CommonDialog::OkOnly);
         commonDialog.setText(tr("Illegal private key!"));
         commonDialog.pop();
@@ -121,7 +125,7 @@ void ImportDialog::on_importBtn_clicked()
             return;
         }
 
-        DataMgr::getInstance()->walletImportPrivateKey(privatekey, name);
+		DataMgr::getInstance()->walletImportPrivateKey(privatekey, name);
     }
     else
     {
@@ -133,18 +137,18 @@ void ImportDialog::on_importBtn_clicked()
 
 void ImportDialog::walletImportPrivateKey(bool result)
 {
+	yesOrNO = result;
     ui->importBtn->setEnabled(true);
 
-    if(result) {
-		emit accountImported();
-
+    if(result)
+	{
 		CommonDialog commonDialog(CommonDialog::OkOnly);
         commonDialog.setText(tr(" Import success!    "));
         commonDialog.pop();
-
 		close();
-
-    } else {
+    }
+	else
+	{
 		CommonDialog commonDialog(CommonDialog::OkOnly);
 		commonDialog.setText( tr("Illegal private key!"));
 		commonDialog.pop();
@@ -172,5 +176,3 @@ void ImportDialog::on_privateKeyLineEdit_returnPressed()
         on_importBtn_clicked();
     }
 }
-
-

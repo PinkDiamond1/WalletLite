@@ -1,11 +1,11 @@
 #include "selectgoppathwidget.h"
 #include "ui_selectgoppathwidget.h"
 #include "goopal.h"
-#include <QPainter>
 #include "commondialog.h"
-
+#include "macro.h"
 #include "datamgr.h"
 
+#include <QPainter>
 #include <QFileDialog>
 #include <QDebug>
 #include <QDesktopServices>

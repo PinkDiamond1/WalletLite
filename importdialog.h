@@ -17,10 +17,7 @@ public:
     explicit ImportDialog(QWidget *parent = 0);
     ~ImportDialog();
 
-    void pop();
-
-signals:
-    void accountImported();
+    bool pop();
 
 private slots:
     void on_cancelBtn_clicked();
@@ -32,7 +29,8 @@ private slots:
     void walletImportPrivateKey(bool result);
 
 private:
-    Ui::ImportDialog *ui;
+	Ui::ImportDialog *ui;
+	bool yesOrNO = false;
 
     bool accountNameAlreadyExisted(QString name);
 };

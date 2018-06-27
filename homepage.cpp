@@ -7,6 +7,7 @@
 #include <QScrollBar>
 #include <QToolButton>
 
+#include "macro.h"
 #include "ui_homepage.h"
 #include "assetslistview.h"
 #include "datamgr.h"

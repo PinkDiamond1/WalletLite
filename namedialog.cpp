@@ -5,6 +5,8 @@
 #include "gop_common_define.h"
 #include "datamgr.h"
 #include "commondialog.h"
+#include "macro.h"
+
 #include <QMovie>
 
 NameDialog::NameDialog(QWidget *parent) :

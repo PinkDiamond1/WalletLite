@@ -13,6 +13,8 @@
 #include "debug_log.h"
 #include "commondialog.h"
 #include "datamgr.h"
+#include "macro.h"
+
 NormalLogin::NormalLogin(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::NormalLogin)

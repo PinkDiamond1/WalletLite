@@ -83,7 +83,6 @@ signals:
 	void showApplyDelegatePage(QString);
 	void showTransferPage(QString);
 	void refreshAccountInfo();
-	void newAccount();
 
 private slots:
 	void addAccount();

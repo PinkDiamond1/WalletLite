@@ -2,6 +2,7 @@
 #include <assert.h>
 #include <algorithm>
 #include "misc.h"
+#include "macro.h"
 
 #include <qmessagebox.h>
 #include <QApplication>
@@ -285,7 +286,12 @@ void DataMgr::walletImportPrivateKey(const QString& wif_key_to_import, const QSt
         thinkyoung::blockchain::Address addr(private_key.get_public_key());
         QString address = QString::fromStdString(addr.AddressToString());
 
-        DataBase::getInstance()->insertAccount(account_name, address, pubkey, prikey);
+        bool ret = DataBase::getInstance()->insertAccount(account_name, address, pubkey, prikey);
+		if (ret)
+		{
+			walletListAccounts();
+		}
+
 		DataBase::getInstance()->deleteAbandonAccount(account_name);
     } else {
         qDebug() << "private invalid!";
@@ -325,14 +331,21 @@ bool DataMgr::walletCheckAddress(const QString& address) {
 	return thinkyoung::blockchain::Address().is_valid(strToAccount);
 }
 
-bool DataMgr::walletAccountCreate(QString& account_name) {
+bool DataMgr::walletAccountCreate(QString& account_name)
+{
     fc::ecc::private_key private_key = fc::ecc::private_key::generate();
     QString prikey = QString::fromStdString(thinkyoung::blockchain::key_to_wif(private_key));
     QString pubkey = QString::fromStdString(std::string(PublicKeyType(private_key.get_public_key())));
     thinkyoung::blockchain::Address addr(private_key.get_public_key());
     QString address = QString::fromStdString(addr.AddressToString());
 
-    return DataBase::getInstance()->insertAccount(account_name, address, pubkey, prikey);
+    bool ret = DataBase::getInstance()->insertAccount(account_name, address, pubkey, prikey);
+	if (ret)
+	{
+		walletListAccounts();
+	}
+
+	return ret;
 }
 
 void DataMgr::walletAccountSetApproval(QString& account_name, int approval) {
@@ -779,11 +792,16 @@ QString DataMgr::getAddrAccont(QString addr)
 
 void DataMgr::walletListAccounts()
 {
-	const QVector<CommonAccountInfo>& accountInfos = DataBase::getInstance()->queryAllAccount();
+	auto& accountInfos = DataBase::getInstance()->queryAllAccount();
 	_account_info_map.clear();
 	for (int i = 0; i < accountInfos.size(); i++)
 	{
 		_account_info_map.insert(accountInfos[i].name, accountInfos[i]);
+	}
+
+	if (_account_info_map.size() > 0 && getCurrentAccount().isEmpty())
+	{
+		setCurrentAccount(_account_info_map.keys().at(0));
 	}
 }
 
@@ -833,7 +851,18 @@ bool DataMgr::walletAccountDelete(QString& account_name)
 	if (itr != _account_info_map.end())
 	{
 		_account_info_map.remove(account_name);
-		return DataBase::getInstance()->abandonAccount(account_name);
+		bool ret = DataBase::getInstance()->abandonAccount(account_name);
+		if (ret)
+		{
+			if (getCurrentAccount() == account_name)
+			{
+				if (_account_info_map.size() > 0)
+					setCurrentAccount(_account_info_map.keys().at(0));
+				else
+					setCurrentAccount("");
+			}
+		}
+		return ret;
 	}
 
 	return false;

@@ -10,6 +10,7 @@
 #include "firstlogin.h"
 #include "ui_firstlogin.h"
 #include "goopal.h"
+#include "macro.h"
 #include "debug_log.h"
 #include "commondialog.h"
 #include "datamgr.h"

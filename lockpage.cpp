@@ -14,6 +14,7 @@
 #include "datamgr.h"
 #include "debug_log.h"
 #include "commondialog.h"
+#include "macro.h"
 
 LockPage::LockPage(QWidget *parent) :
     QWidget(parent),

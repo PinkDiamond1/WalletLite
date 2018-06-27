@@ -2,6 +2,7 @@
 #include <assert.h>
 #include <algorithm>
 #include "misc.h"
+#include "macro.h"
 
 #include <qmessagebox.h>
 #include <QApplication>

@@ -1,34 +1,28 @@
 #include <QApplication>
+
 #ifdef WIN32
 #include "Windows.h"
-#endif //zxlwin
-#include <QDebug>
-#include <qapplication.h>
-#include <QTranslator>
-#include <QThread>
-#include <QTextCodec>
-#include <QDir>
-#ifdef WIN32
 #include "DbgHelp.h"
-#endif //zxlwin
-#ifdef WIN32
 #include "tchar.h"
-#endif //zxlwin
-#ifdef WIN32
 #include "ShlObj.h"
-#endif //zxlwin
+#endif
+
 #include "datamgr.h"
 #include "database.h"
 #include "thirddatamgr.h"
-
+#include "macro.h"
 #include "goopal.h"
 #include "frame.h"
 #include "outputmessage.h"
 #include "misc.h"
 
 #include <QNetworkInterface>
-
-//#include <QMessageBox>
+#include <QDebug>
+#include <qapplication.h>
+#include <QTranslator>
+#include <QThread>
+#include <QTextCodec>
+#include <QDir>
 
 #ifndef WIN32
 #include <sys/types.h>
@@ -204,6 +198,7 @@ int main(int argc, char *argv[])
 	ThirdDataMgr::getInstance();
     DataMgr::getDataMgr();
 	DataMgr::getDataMgr()->initCurrencyListFromDB();
+	DataMgr::getDataMgr()->walletListAccounts();
 
 #ifdef WIN32
 	QSettings config(QCoreApplication::applicationDirPath() + "/" + VERSION_CONFIG, QSettings::IniFormat);

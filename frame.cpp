@@ -29,6 +29,7 @@
 #include "database.h"
 #include "datamgr.h"
 #include "misc.h"
+#include "macro.h"
 #include "homepage.h"
 #include "quotationpage.h"
 #include "thirddatamgr.h"
@@ -229,8 +230,14 @@ void Frame::getAccountInfo()
 {
 	if (DataMgr::getInstance()->canRequestBalance())
 	{
-		DataMgr::getInstance()->walletListAccounts();
-		walletListAccounts();
+		if (DataMgr::getDataMgr()->getAccountInfo()->size() == 0)
+			return;
+
+		if (DataMgr::getInstance()->canRequestBalance())
+		{
+			for (CommonAccountInfo account : *(DataMgr::getInstance()->getAccountInfo()))
+				DataMgr::getDataMgr()->walletAccountBalance(account.name);
+		}
 
 		if (billPage != nullptr)
 		{
@@ -331,12 +338,6 @@ void Frame::settingSaved() {
     DLOG_QT_WALLET_FUNCTION_END;
 }
 
-void Frame::privateKeyImported()
-{
-    getAccountInfo();
-    accountPage->updateAccountList();
-}
-
 void Frame::mousePressEvent(QMouseEvent *event) {
     if(event->button() == Qt::LeftButton) {
         mouse_press = true;
@@ -426,11 +427,6 @@ void Frame::closeCurrentPage()
     DLOG_QT_WALLET_FUNCTION_END;
 }
 
-void Frame::refresh()
-{
-	getAccountInfo();
-}
-
 void Frame::autoRefresh()
 {
 	getAccountInfo();
@@ -514,8 +510,7 @@ void Frame::showAccountPage()
 	connect(accountPage, SIGNAL(openAccountPage(QString)), this, SLOT(showAccountPage()));
 	connect(accountPage, SIGNAL(showShadowWidget()), this, SLOT(shadowWidgetShow()));
 	connect(accountPage, SIGNAL(hideShadowWidget()), this, SLOT(shadowWidgetHide()));
-	connect(accountPage, SIGNAL(refreshAccountInfo()), this, SLOT(refresh()));
-	connect(accountPage, SIGNAL(newAccount()), this, SLOT(refresh()));
+	connect(accountPage, SIGNAL(refreshAccountInfo()), this, SLOT(getAccountInfo()));
 	connect(accountPage, SIGNAL(showTransferPage(QString)), this, SLOT(showTransferPage(QString)));
 
 	accountPage->show();
@@ -692,25 +687,6 @@ void Frame::setLanguage(QString language) {
     }
     
     DLOG_QT_WALLET_FUNCTION_END;
-}
-
-void Frame::walletListAccounts()
-{
-	if (DataMgr::getDataMgr()->getAccountInfo()->size() == 0)
-	{
-		return;
-	}
-
-    if( DataMgr::getDataMgr()->getCurrentAccount().isEmpty()) {
-        // 默认是 map中第一个账户
-        DataMgr::getDataMgr()->setCurrentAccount(DataMgr::getDataMgr()->getAccountInfo()->keys().at(0));
-    }
-
-	if (DataMgr::getInstance()->canRequestBalance())
-	{
-		for (CommonAccountInfo account : *(DataMgr::getInstance()->getAccountInfo()))
-			DataMgr::getDataMgr()->walletAccountBalance(account.name);
-	}
 }
 
 void Frame::walletAccountBalance()

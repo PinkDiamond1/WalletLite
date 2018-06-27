@@ -1,4 +1,5 @@
 #include "tokentransaction.h"
+#include "macro.h"
 #include "misc.h"
 #include "datamgr.h"
 
