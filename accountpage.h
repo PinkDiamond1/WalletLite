@@ -69,11 +69,11 @@ public:
 	void retranslator(QString language);
 	void renameAccount(QString name);
 	void deleteAccount(QString name);
+	void refreshPage();
 
 private:
 	void updateAccountCountLabel();
 	void paintEvent(QPaintEvent*);
-	void updatePage();
 
 signals:
 	void openAccountPage(QString);

@@ -57,8 +57,10 @@ public slots:
     void autoRefresh();
 	void autoRefreshQuotation();
 
-    void shadowWidgetShow();
-    void shadowWidgetHide();
+	void reqQuotationFinished(bool firstTime);
+
+	void shadowWidgetShow();
+	void shadowWidgetHide();
 
     void setLanguage(QString);
 
@@ -114,17 +116,16 @@ private:
     bool mouse_press;
 	QPoint move_point;
 
-	HomePage* homePage;
-	BillPage* billPage;
-	TransferPage* transferPage;
-	AccountPage* accountPage;
-	QuotationPage* quotatioPage;
-	FunctionBar* functionBar;
-    LockPage*  lockPage;
-    TitleBar* titleBar;
+	HomePage* homePage = nullptr;
+	BillPage* billPage = nullptr;
+	TransferPage* transferPage = nullptr;
+	AccountPage* accountPage = nullptr;
+	QuotationPage* quotatioPage = nullptr;
+	FunctionBar* functionBar = nullptr;
+	LockPage*  lockPage = nullptr;
+	TitleBar* titleBar = nullptr;
 
     QString lastPage;
-    QString currentAccount;
     int currentPageId; //-1:none 0:homePage 1:billPage 2:transferPage 3:accountPage 4:quotationPage
 
     ShadowWidget* shadowWidget;

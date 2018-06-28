@@ -157,10 +157,10 @@ AccountPage::AccountPage(QWidget *parent) :
 	QLabel* addAccountBtnLabel = new QLabel(ui->addAccountBtn);
 	addAccountBtnLabel->setGeometry(23, 12, 12, 12);
 
-	updatePage();
+	refreshPage();
 
 	Frame* frame = dynamic_cast<Frame*>(Goopal::getInstance()->mainFrame);
-	connect(frame, &Frame::updateAccountBalance, this, &AccountPage::updatePage);
+	connect(frame, &Frame::updateAccountBalance, this, &AccountPage::refreshPage);
 
 	DLOG_QT_WALLET_FUNCTION_END;
 }
@@ -175,7 +175,7 @@ void AccountPage::importAccount()
 	ImportDialog importDialog;
 	if (importDialog.pop())
 	{
-		updatePage();
+		refreshPage();
 		emit refreshAccountInfo();
 	}
 }
@@ -200,7 +200,7 @@ void AccountPage::addAccount()
 				exportDialog.pop();
 			}
 
-			updatePage();
+			refreshPage();
 			emit refreshAccountInfo();
 		}
 	}
@@ -361,7 +361,7 @@ void AccountPage::updateAccountCountLabel()
 	ui->accountCountLabel->setText(countTip);
 }
 
-void AccountPage::updatePage()
+void AccountPage::refreshPage()
 {
 	updateAccountList();
 	updateAccountCountLabel();
@@ -391,7 +391,7 @@ void AccountPage::deleteAccount(QString name)
 	DeleteAccountDialog deleteACcountDialog(name);
 	if (deleteACcountDialog.pop())
 	{
-		updatePage();
+		refreshPage();
 
 		CommonDialog tipDialog(CommonDialog::OkOnly);
         auto text = QString(tr("You have successfully hidden the account \"%1\".\nYou can retrieve the account with the private key in Add Account-Import Account.")).arg(name);

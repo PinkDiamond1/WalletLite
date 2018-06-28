@@ -1,4 +1,6 @@
-﻿#include <QPainter>
+﻿#include "frame.h"
+
+#include <QPainter>
 #include <QLayout>
 #include <QMouseEvent>
 #include <QKeyEvent>
@@ -8,6 +10,9 @@
 #include <QApplication>
 #include <QDesktopWidget>
 
+#include <random>
+#include <ctime>
+
 #include "firstlogin.h"
 #include "normallogin.h"
 #include "billpage.h"
@@ -16,7 +21,6 @@
 #include "bottombar.h"
 #include "lockpage.h"
 #include "titlebar.h"
-#include "frame.h"
 #include "goopal.h"
 #include "debug_log.h"
 #include "functionbar.h"
@@ -57,7 +61,6 @@ Frame::Frame():
 	mouse_press(false),
 	currentPageId(-1),
 	lastPage(""),
-	currentAccount(""),
 	quotatioPage(nullptr)
 {
     DLOG_QT_WALLET_FUNCTION_BEGIN;
@@ -80,10 +83,6 @@ Frame::Frame():
     shadowWidget = new ShadowWidget(this);
     shadowWidget->init(this->size());
     shadowWidget->hide();
-
-    connect(DataMgr::getDataMgr(), &DataMgr::onCallContract, this, &Frame::tokenTransferTo);
-    connect(DataMgr::getDataMgr(), &DataMgr::onWalletAccountBalance, this, &Frame::walletAccountBalance);
-	connect(DataMgr::getInstance(), &DataMgr::assetTypeGet, this, &Frame::assetTypeGet);
 
 	//放在托盘提示信息、托盘图标
     trayIcon = new QSystemTrayIcon(this);
@@ -155,6 +154,11 @@ Frame::Frame():
         showFirstLoginPage();
 
 	startAutoUpdate();
+
+	connect(DataMgr::getDataMgr(), &DataMgr::onCallContract, this, &Frame::tokenTransferTo);
+	connect(DataMgr::getDataMgr(), &DataMgr::onWalletAccountBalance, this, &Frame::walletAccountBalance);
+	connect(DataMgr::getInstance(), &DataMgr::assetTypeGet, this, &Frame::assetTypeGet);
+	connect(ThirdDataMgr::getInstance(), &ThirdDataMgr::onReqQuotationFinished, this, &Frame::reqQuotationFinished);
 
     DLOG_QT_WALLET_FUNCTION_END;
 }
@@ -233,18 +237,43 @@ void Frame::getAccountInfo()
 		if (DataMgr::getDataMgr()->getAccountInfo()->size() == 0)
 			return;
 
-		if (DataMgr::getInstance()->canRequestBalance())
+		if (homePage != nullptr || accountPage != nullptr)
 		{
 			for (CommonAccountInfo account : *(DataMgr::getInstance()->getAccountInfo()))
 				DataMgr::getDataMgr()->walletAccountBalance(account.name);
-		}
 
-		if (billPage != nullptr)
+			timerForAutoRefresh->stop();
+		}
+		else if (billPage != nullptr || transferPage != nullptr)
 		{
-			billPage->updateTransactions();
-		}
+			const QString& currentAcount = DataMgr::getDataMgr()->getCurrentAccount();
+			DataMgr::getDataMgr()->walletAccountBalance(currentAcount);
 
-		timerForAutoRefresh->stop();
+			if (billPage != nullptr)
+			{
+				billPage->updateTransactions();
+			}
+
+			timerForAutoRefresh->stop();
+		}
+	}
+}
+
+void Frame::reqQuotationFinished(bool firstTime)
+{
+	if (homePage != nullptr)
+	{
+		if (firstTime)
+			homePage->refreshPage();
+	}
+	else if (accountPage != nullptr)
+	{
+		if (firstTime)
+			accountPage->refreshPage();
+	}
+	else if (quotatioPage != nullptr)
+	{
+		quotatioPage->refreshQuotation();
 	}
 }
 
@@ -501,7 +530,6 @@ void Frame::showFunctionBar()
 void Frame::showAccountPage()
 {
 	closeCurrentPage();
-	getAccountInfo();
 
 	accountPage = new AccountPage(this);
 	accountPage->move(134, 48);
@@ -515,6 +543,8 @@ void Frame::showAccountPage()
 
 	accountPage->show();
 	currentPageId = 3;
+
+	getAccountInfo();
 }
 
 void Frame::showTransferPage()
@@ -526,7 +556,6 @@ void Frame::showTransferPage()
 void Frame::showTransferPage(QString accountName)
 {
     closeCurrentPage();
-	getAccountInfo();
 
 	transferPage = new TransferPage(accountName, this);
 	transferPage->move(134, 48);
@@ -539,6 +568,8 @@ void Frame::showTransferPage(QString accountName)
 
 	transferPage->show();
 	currentPageId = 2;
+
+	getAccountInfo();
 }
 
 void Frame::showQuotationPage()
@@ -567,7 +598,6 @@ void Frame::assetTypeGet()
 void Frame::showHomePage()
 {
 	closeCurrentPage();
-	getAccountInfo();
 
 	homePage = new HomePage(this);
 	homePage->move(134, 48);
@@ -575,13 +605,14 @@ void Frame::showHomePage()
 	homePage->show();
 
 	currentPageId = 0;
+
+	getAccountInfo();
 }
 
 void Frame::showBillPage(QString accountName)
 {
 	DLOG_QT_WALLET_FUNCTION_BEGIN;
-	currentAccount = accountName;
-	getAccountInfo();
+
 	closeCurrentPage();
 
 	billPage = new BillPage(accountName, this);
@@ -595,6 +626,8 @@ void Frame::showBillPage(QString accountName)
 
 	billPage->show();
 	currentPageId = 1;
+
+	getAccountInfo();
 
 	DLOG_QT_WALLET_FUNCTION_END;
 }
@@ -623,7 +656,6 @@ void Frame::shadowWidgetHide() {
 void Frame::showTransferPageWithAddress(QString address)
 {
     closeCurrentPage();
-	getAccountInfo();
 
     const QString& accountName = DataMgr::getInstance()->getCurrentAccount();
 	transferPage = new TransferPage(accountName, this);
@@ -638,6 +670,8 @@ void Frame::showTransferPageWithAddress(QString address)
 
     transferPage->show();
     currentPageId = 2;
+
+	getAccountInfo();
 }
 
 void Frame::setLanguage(QString language) {
@@ -669,8 +703,11 @@ void Frame::setLanguage(QString language) {
             case 0:
 				showHomePage();
                 break;
-            case 1:
-                showBillPage(currentAccount);
+			case 1:
+			{
+				const QString& accountName = DataMgr::getInstance()->getCurrentAccount();
+				showBillPage(accountName);
+			}
                 break;
             case 2:
 				showTransferPage();
@@ -691,9 +728,15 @@ void Frame::setLanguage(QString language) {
 
 void Frame::walletAccountBalance()
 {
-    DataMgr::getInstance()->walletUpdateAccounts();
+	DataMgr::getInstance()->walletUpdateAccounts();
 	emit updateAccountBalance();
-	timerForAutoRefresh->start(AUTO_REFRESH_TIME);
+
+	static std::default_random_engine generater(time(nullptr));
+	static int range = AUTO_REFRESH_TIME / 5;
+	static std::uniform_int_distribution<int> dis(-range, range);
+	int interval = AUTO_REFRESH_TIME + dis(generater);
+
+	timerForAutoRefresh->start(interval);
 }
 
 void Frame::walletLock() {

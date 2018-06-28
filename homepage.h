@@ -40,8 +40,8 @@ private:
 	void setTotalAssetVal(double val);
 
 public slots:
+	void refreshPage();
 	void onListHeightChanged(int height);
-	void updateBalance();
 	void scrollMoveEvent(HomePageScrollArea::MoveEvent e);
 	void btnAniUpdate();
 
@@ -49,7 +49,7 @@ private slots:
     void on_currencyTypeBox_currentIndexChanged(const QString &arg);
     void on_forwardDownBtn_clicked();
 	void on_forwardUpBtn_clicked();
-	void on_hiddenTotalBtn_clicked();
+	void hiddenTotalBtn_clicked();
 
 private:
 	Ui::HomePage *ui;

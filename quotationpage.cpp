@@ -48,8 +48,6 @@ QuotationPage::QuotationPage(QWidget *parent) :
 	dataFromLabel->setPalette(palette);
 
 	retranslator(DataMgr::getInstance()->getLanguage());
-
-	connect(ThirdDataMgr::getInstance(), &ThirdDataMgr::onReqQuotationFinished, this, &QuotationPage::refreshQuotation);
 }
 
 QuotationPage::~QuotationPage()

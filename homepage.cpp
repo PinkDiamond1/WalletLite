@@ -63,7 +63,7 @@ HomePage::HomePage(QWidget *parent) :
 	connect(ui->scrollArea, &HomePageScrollArea::scrollMoveEvent, this, &HomePage::scrollMoveEvent);
 
 	Frame* frame = dynamic_cast<Frame*>(Goopal::getInstance()->mainFrame);
-	connect(frame, &Frame::updateAccountBalance, this, &HomePage::updateBalance);
+	connect(frame, &Frame::updateAccountBalance, this, &HomePage::refreshPage);
 }
 
 HomePage::~HomePage()
@@ -129,7 +129,7 @@ void HomePage::initView()
 	hiddenTotalBtn->setStyleSheet("background:transparent;");
 	hiddenTotalBtn->setIconSize(QSize(20, 14));
 	hiddenTotalBtn->setIcon(QIcon(DataMgr::getDataMgr()->getWorkPath() + "pic2/eye.png"));
-	connect(hiddenTotalBtn, &QToolButton::clicked, this, &HomePage::on_hiddenTotalBtn_clicked);
+	connect(hiddenTotalBtn, &QToolButton::clicked, this, &HomePage::hiddenTotalBtn_clicked);
 
 	//init list title
 	auto assetNameTitle = new QLabel(ui->scrollAreaWidgetContents);
@@ -203,7 +203,7 @@ void HomePage::initView()
 	
 	startBtnAni(downBtnAniEffect);
 
-	updateBalance();
+	refreshPage();
 }
 
 void HomePage::paintEvent(QPaintEvent*)
@@ -214,7 +214,7 @@ void HomePage::paintEvent(QPaintEvent*)
 	painter.drawRect(QRect(0, 0, 826, 532));
 }
 
-void HomePage::updateBalance()
+void HomePage::refreshPage()
 {
 	refreshAssetslistView();
 	refreshPieChart();
@@ -320,7 +320,7 @@ void HomePage::on_currencyTypeBox_currentIndexChanged(const QString &arg)
 	{
 		ThirdDataMgr::getInstance()->setCurrentCurrencyName(arg);
 		priceTitle->setText(tr("Value") + "/" + arg);
-		updateBalance();
+		refreshPage();
 	}
 }
 
@@ -389,7 +389,7 @@ void HomePage::btnAniUpdate()
 	}
 }
 
-void HomePage::on_hiddenTotalBtn_clicked()
+void HomePage::hiddenTotalBtn_clicked()
 {
 	DataMgr::getInstance()->changeHiddenTotalAssetState();
 	setTotalAssetVal(totalAssetVal);

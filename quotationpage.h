@@ -19,14 +19,14 @@ class QuotationPage : public QWidget
 public:
     explicit QuotationPage(QWidget *parent = 0);
 	~QuotationPage();
+
 	void retranslator(QString language);
+	void refreshQuotation();
 
 private slots:
     void on_sortPriceBtn_clicked();
     void on_sortChangeRateBtn_clicked();
 	void on_sortChangeBtn_clicked();
-	void refreshQuotation();
-
     void on_nameBtn_clicked();
 
 private:

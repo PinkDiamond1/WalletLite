@@ -51,7 +51,7 @@ private:
 	void resetQuotationInfo();
 
 signals:
-	void onReqQuotationFinished();
+	void onReqQuotationFinished(bool);
 
 public slots:
 	void requestQuotationInfo();
@@ -72,6 +72,7 @@ private:
 	QNetworkAccessManager netmgr_exchange_rate;
 	QNetworkReply* netReply_exchange_rate;
 	
+	bool firstReqQuotation = true;
 	QVector<QuotationInfo*>* quotationInfoList = nullptr;
 	QMap<QString, QuotationInfo*>* quotationInfoMap = nullptr;
 

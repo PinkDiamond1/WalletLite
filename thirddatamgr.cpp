@@ -199,7 +199,8 @@ void ThirdDataMgr::requestQuotationFinished()
 			quotationInfoMap->insert(quotationInfo->symbol, quotationInfo);
 		}
 
-		emit onReqQuotationFinished();
+		emit onReqQuotationFinished(firstReqQuotation);
+		firstReqQuotation = false;
 	}
 	else
 	{
