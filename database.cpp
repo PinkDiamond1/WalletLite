@@ -538,7 +538,7 @@ QString DataBase::queryFormerNameByAddress(const QString& address)
 	if (success && sql_query.next())
 		return sql_query.value("name").toString();
 	else
-		qDebug() << "Error: Fail to queryAccount." << sql_query.lastError();
+		qDebug() << "Error: Fail to queryFormerNameByAddress." << sql_query.lastError();
 
 	return "";
 }
