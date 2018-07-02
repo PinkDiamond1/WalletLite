@@ -37,6 +37,7 @@
 #include "homepage.h"
 #include "quotationpage.h"
 #include "thirddatamgr.h"
+#include "trackmgr.h"
 
 #ifdef WIN32
 #include "qt_windows.h"
@@ -228,6 +229,8 @@ void Frame::alreadyLogin()
 	showTitleBar();
 	showFunctionBar();
 	showHomePage();
+
+	//TrackMgr::getInstance()->login();
 }
 
 void Frame::getAccountInfo()

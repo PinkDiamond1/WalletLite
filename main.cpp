@@ -10,6 +10,7 @@
 #include "datamgr.h"
 #include "database.h"
 #include "thirddatamgr.h"
+#include "trackmgr.h"
 #include "macro.h"
 #include "goopal.h"
 #include "frame.h"
@@ -199,6 +200,7 @@ int main(int argc, char *argv[])
     DataMgr::getDataMgr();
 	DataMgr::getDataMgr()->initCurrencyListFromDB();
 	DataMgr::getDataMgr()->walletListAccounts();
+	TrackMgr::getInstance();
 
 #ifdef WIN32
 	QSettings config(QCoreApplication::applicationDirPath() + "/" + VERSION_CONFIG, QSettings::IniFormat);
@@ -233,6 +235,7 @@ int main(int argc, char *argv[])
 	frame->close();
 	delete frame;
 
+	TrackMgr::destroyInstance();
     DataMgr::deleteDataMgr();
 	ThirdDataMgr::deleteInstance();
     DataBase::destroyInstance();
