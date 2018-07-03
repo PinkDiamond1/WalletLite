@@ -27,11 +27,6 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
-      <Extensions>qrc;*</Extensions>
-      <ParseFiles>false</ParseFiles>
-    </Filter>
     <Filter Include="Source Files">
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
@@ -78,24 +73,6 @@
     <Filter Include="Source Files\database">
       <UniqueIdentifier>{32eeb1d4-96d9-4737-a92a-28e09d287d30}</UniqueIdentifier>
     </Filter>
-    <Filter Include="fc">
-      <UniqueIdentifier>{ffc4b011-5241-4938-941d-d8e7a9fa6f61}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="fc\container">
-      <UniqueIdentifier>{542625fc-6c18-4a47-8b55-baefcb945fb5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="fc\crypto">
-      <UniqueIdentifier>{248ce646-afb8-44ac-8c83-0760b5982679}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="fc\exception">
-      <UniqueIdentifier>{47ab7e93-9f86-4b04-96a5-f8e9bed82717}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="fc\io">
-      <UniqueIdentifier>{c3f90885-d0c4-4fe2-92aa-cdb80b8034ed}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="fc\reflect">
-      <UniqueIdentifier>{9b5905df-051f-4b27-a0aa-4d98e811a1d8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src">
       <UniqueIdentifier>{e155d982-4577-46d4-af52-e5d33146e193}</UniqueIdentifier>
     </Filter>
@@ -125,6 +102,15 @@
     </Filter>
     <Filter Include="Header Files\wallet-view\homepage">
       <UniqueIdentifier>{ac066a9f-4f8c-4b60-a2b5-965e493ce146}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\fc\container">
+      <UniqueIdentifier>{31f06392-3e82-4afb-a34b-d379c9d9d80f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\fc\exception">
+      <UniqueIdentifier>{5fdb049a-29fc-4132-a267-0a21d19eca40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\fc\reflect">
+      <UniqueIdentifier>{dac671e3-a6c4-47b5-a319-02b6ee9c3b1f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -1398,201 +1384,6 @@
     <ClInclude Include="database.h">
       <Filter>Header Files\database</Filter>
     </ClInclude>
-    <ClInclude Include="fc\aligned.hpp">
-      <Filter>fc</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\array.hpp">
-      <Filter>fc</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\filesystem.hpp">
-      <Filter>fc</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\fwd.hpp">
-      <Filter>fc</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\fwd_impl.hpp">
-      <Filter>fc</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\optional.hpp">
-      <Filter>fc</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\real128.hpp">
-      <Filter>fc</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\safe.hpp">
-      <Filter>fc</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\shared_ptr.hpp">
-      <Filter>fc</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\signal.hpp">
-      <Filter>fc</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\signals.hpp">
-      <Filter>fc</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\smart_ref_fwd.hpp">
-      <Filter>fc</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\smart_ref_impl.hpp">
-      <Filter>fc</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\static_variant.hpp">
-      <Filter>fc</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\string.hpp">
-      <Filter>fc</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\time.hpp">
-      <Filter>fc</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\tuple.hpp">
-      <Filter>fc</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\uint128.hpp">
-      <Filter>fc</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\unique_ptr.hpp">
-      <Filter>fc</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\utf8.hpp">
-      <Filter>fc</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\utility.hpp">
-      <Filter>fc</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\variant.hpp">
-      <Filter>fc</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\variant_object.hpp">
-      <Filter>fc</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\vector.hpp">
-      <Filter>fc</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\vector_fwd.hpp">
-      <Filter>fc</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\wait_any.hpp">
-      <Filter>fc</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\container\deque.hpp">
-      <Filter>fc\container</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\container\deque_fwd.hpp">
-      <Filter>fc\container</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\container\flat.hpp">
-      <Filter>fc\container</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\container\flat_fwd.hpp">
-      <Filter>fc\container</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\crypto\aes.hpp">
-      <Filter>fc\crypto</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\crypto\base32.hpp">
-      <Filter>fc\crypto</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\crypto\base36.hpp">
-      <Filter>fc\crypto</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\crypto\base58.hpp">
-      <Filter>fc\crypto</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\crypto\base64.hpp">
-      <Filter>fc\crypto</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\crypto\bigint.hpp">
-      <Filter>fc\crypto</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\crypto\blowfish.hpp">
-      <Filter>fc\crypto</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\crypto\city.hpp">
-      <Filter>fc\crypto</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\crypto\dh.hpp">
-      <Filter>fc\crypto</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\crypto\digest.hpp">
-      <Filter>fc\crypto</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\crypto\elliptic.hpp">
-      <Filter>fc\crypto</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\crypto\hex.hpp">
-      <Filter>fc\crypto</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\crypto\hmac.hpp">
-      <Filter>fc\crypto</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\crypto\openssl.hpp">
-      <Filter>fc\crypto</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\crypto\pke.hpp">
-      <Filter>fc\crypto</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\crypto\rand.hpp">
-      <Filter>fc\crypto</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\crypto\ripemd160.hpp">
-      <Filter>fc\crypto</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\crypto\sha1.hpp">
-      <Filter>fc\crypto</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\crypto\sha224.hpp">
-      <Filter>fc\crypto</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\crypto\sha256.hpp">
-      <Filter>fc\crypto</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\crypto\sha512.hpp">
-      <Filter>fc\crypto</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\exception\exception.hpp">
-      <Filter>fc\exception</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\io\console.hpp">
-      <Filter>fc\io</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\io\datastream.hpp">
-      <Filter>fc\io</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\io\datastream_back.hpp">
-      <Filter>fc\io</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\io\enum_type.hpp">
-      <Filter>fc\io</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\io\raw.hpp">
-      <Filter>fc\io</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\io\raw_fwd.hpp">
-      <Filter>fc\io</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\io\raw_unpack_file.hpp">
-      <Filter>fc\io</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\io\raw_variant.hpp">
-      <Filter>fc\io</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\io\stdio.hpp">
-      <Filter>fc\io</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\io\varint.hpp">
-      <Filter>fc\io</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\reflect\reflect.hpp">
-      <Filter>fc\reflect</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\reflect\typename.hpp">
-      <Filter>fc\reflect</Filter>
-    </ClInclude>
-    <ClInclude Include="fc\reflect\variant.hpp">
-      <Filter>fc\reflect</Filter>
-    </ClInclude>
     <ClInclude Include="src\fc\byteswap.hpp">
       <Filter>src\fc</Filter>
     </ClInclude>
@@ -1614,15 +1405,6 @@
     <ClInclude Include="src\fc\utf8\unchecked.h">
       <Filter>src\fc\utf8</Filter>
     </ClInclude>
-    <ClInclude Include="achainlightwalletapi.h">
-      <Filter>fc</Filter>
-    </ClInclude>
-    <ClInclude Include="CyoDecode.h">
-      <Filter>fc</Filter>
-    </ClInclude>
-    <ClInclude Include="CyoEncode.h">
-      <Filter>fc</Filter>
-    </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_homepage.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
@@ -1643,6 +1425,303 @@
     </ClInclude>
     <ClInclude Include="macro.h">
       <Filter>Header Files\blockchain</Filter>
+    </ClInclude>
+    <ClInclude Include="blockchain\AccountEntry.hpp">
+      <Filter>src\blockchain</Filter>
+    </ClInclude>
+    <ClInclude Include="blockchain\AccountOperations.hpp">
+      <Filter>src\blockchain</Filter>
+    </ClInclude>
+    <ClInclude Include="blockchain\Address.hpp">
+      <Filter>src\blockchain</Filter>
+    </ClInclude>
+    <ClInclude Include="blockchain\api_extern.hpp">
+      <Filter>src\blockchain</Filter>
+    </ClInclude>
+    <ClInclude Include="blockchain\Asset.hpp">
+      <Filter>src\blockchain</Filter>
+    </ClInclude>
+    <ClInclude Include="blockchain\AssetEntry.hpp">
+      <Filter>src\blockchain</Filter>
+    </ClInclude>
+    <ClInclude Include="blockchain\AssetOperations.hpp">
+      <Filter>src\blockchain</Filter>
+    </ClInclude>
+    <ClInclude Include="blockchain\BalanceEntry.hpp">
+      <Filter>src\blockchain</Filter>
+    </ClInclude>
+    <ClInclude Include="blockchain\BalanceOperations.hpp">
+      <Filter>src\blockchain</Filter>
+    </ClInclude>
+    <ClInclude Include="blockchain\Block.hpp">
+      <Filter>src\blockchain</Filter>
+    </ClInclude>
+    <ClInclude Include="blockchain\BlockEntry.hpp">
+      <Filter>src\blockchain</Filter>
+    </ClInclude>
+    <ClInclude Include="blockchain\Checkpoints.hpp">
+      <Filter>src\blockchain</Filter>
+    </ClInclude>
+    <ClInclude Include="blockchain\Condition.hpp">
+      <Filter>src\blockchain</Filter>
+    </ClInclude>
+    <ClInclude Include="blockchain\Config.hpp">
+      <Filter>src\blockchain</Filter>
+    </ClInclude>
+    <ClInclude Include="blockchain\ContractOperations.hpp">
+      <Filter>src\blockchain</Filter>
+    </ClInclude>
+    <ClInclude Include="blockchain\DelegateConfig.hpp">
+      <Filter>src\blockchain</Filter>
+    </ClInclude>
+    <ClInclude Include="blockchain\EventOperations.hpp">
+      <Filter>src\blockchain</Filter>
+    </ClInclude>
+    <ClInclude Include="blockchain\Exceptions.hpp">
+      <Filter>src\blockchain</Filter>
+    </ClInclude>
+    <ClInclude Include="blockchain\ExtendedAddress.hpp">
+      <Filter>src\blockchain</Filter>
+    </ClInclude>
+    <ClInclude Include="blockchain\ImessageOperations.hpp">
+      <Filter>src\blockchain</Filter>
+    </ClInclude>
+    <ClInclude Include="blockchain\OperationFactory.hpp">
+      <Filter>src\blockchain</Filter>
+    </ClInclude>
+    <ClInclude Include="blockchain\Operations.hpp">
+      <Filter>src\blockchain</Filter>
+    </ClInclude>
+    <ClInclude Include="blockchain\PropertyEntry.hpp">
+      <Filter>src\blockchain</Filter>
+    </ClInclude>
+    <ClInclude Include="blockchain\PtsAddress.hpp">
+      <Filter>src\blockchain</Filter>
+    </ClInclude>
+    <ClInclude Include="blockchain\SlateEntry.hpp">
+      <Filter>src\blockchain</Filter>
+    </ClInclude>
+    <ClInclude Include="blockchain\SlateOperations.hpp">
+      <Filter>src\blockchain</Filter>
+    </ClInclude>
+    <ClInclude Include="blockchain\SlotEntry.hpp">
+      <Filter>src\blockchain</Filter>
+    </ClInclude>
+    <ClInclude Include="blockchain\StorageOperations.hpp">
+      <Filter>src\blockchain</Filter>
+    </ClInclude>
+    <ClInclude Include="blockchain\StorageTypes.hpp">
+      <Filter>src\blockchain</Filter>
+    </ClInclude>
+    <ClInclude Include="blockchain\Time.hpp">
+      <Filter>src\blockchain</Filter>
+    </ClInclude>
+    <ClInclude Include="blockchain\Transaction.hpp">
+      <Filter>src\blockchain</Filter>
+    </ClInclude>
+    <ClInclude Include="blockchain\TransactionOperations.hpp">
+      <Filter>src\blockchain</Filter>
+    </ClInclude>
+    <ClInclude Include="blockchain\Types.hpp">
+      <Filter>src\blockchain</Filter>
+    </ClInclude>
+    <ClInclude Include="blockchain\WithdrawTypes.hpp">
+      <Filter>src\blockchain</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\crypto\aes.hpp">
+      <Filter>src\fc\crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\crypto\base32.hpp">
+      <Filter>src\fc\crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\crypto\base36.hpp">
+      <Filter>src\fc\crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\crypto\base58.hpp">
+      <Filter>src\fc\crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\crypto\base64.hpp">
+      <Filter>src\fc\crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\crypto\bigint.hpp">
+      <Filter>src\fc\crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\crypto\blowfish.hpp">
+      <Filter>src\fc\crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\crypto\city.hpp">
+      <Filter>src\fc\crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\crypto\dh.hpp">
+      <Filter>src\fc\crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\crypto\digest.hpp">
+      <Filter>src\fc\crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\crypto\elliptic.hpp">
+      <Filter>src\fc\crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\crypto\hex.hpp">
+      <Filter>src\fc\crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\crypto\hmac.hpp">
+      <Filter>src\fc\crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\crypto\openssl.hpp">
+      <Filter>src\fc\crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\crypto\pke.hpp">
+      <Filter>src\fc\crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\crypto\rand.hpp">
+      <Filter>src\fc\crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\crypto\ripemd160.hpp">
+      <Filter>src\fc\crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\crypto\sha1.hpp">
+      <Filter>src\fc\crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\crypto\sha224.hpp">
+      <Filter>src\fc\crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\crypto\sha256.hpp">
+      <Filter>src\fc\crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\crypto\sha512.hpp">
+      <Filter>src\fc\crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\io\console.hpp">
+      <Filter>src\fc\io</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\io\datastream.hpp">
+      <Filter>src\fc\io</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\io\datastream_back.hpp">
+      <Filter>src\fc\io</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\io\enum_type.hpp">
+      <Filter>src\fc\io</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\io\raw.hpp">
+      <Filter>src\fc\io</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\io\raw_fwd.hpp">
+      <Filter>src\fc\io</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\io\raw_unpack_file.hpp">
+      <Filter>src\fc\io</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\io\raw_variant.hpp">
+      <Filter>src\fc\io</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\io\stdio.hpp">
+      <Filter>src\fc\io</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\io\varint.hpp">
+      <Filter>src\fc\io</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\container\deque.hpp">
+      <Filter>src\fc\container</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\container\deque_fwd.hpp">
+      <Filter>src\fc\container</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\container\flat.hpp">
+      <Filter>src\fc\container</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\container\flat_fwd.hpp">
+      <Filter>src\fc\container</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\exception\exception.hpp">
+      <Filter>src\fc\exception</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\reflect\reflect.hpp">
+      <Filter>src\fc\reflect</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\reflect\typename.hpp">
+      <Filter>src\fc\reflect</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\reflect\variant.hpp">
+      <Filter>src\fc\reflect</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\aligned.hpp">
+      <Filter>src\fc</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\array.hpp">
+      <Filter>src\fc</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\filesystem.hpp">
+      <Filter>src\fc</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\fwd.hpp">
+      <Filter>src\fc</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\fwd_impl.hpp">
+      <Filter>src\fc</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\optional.hpp">
+      <Filter>src\fc</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\real128.hpp">
+      <Filter>src\fc</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\safe.hpp">
+      <Filter>src\fc</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\shared_ptr.hpp">
+      <Filter>src\fc</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\signal.hpp">
+      <Filter>src\fc</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\signals.hpp">
+      <Filter>src\fc</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\smart_ref_fwd.hpp">
+      <Filter>src\fc</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\smart_ref_impl.hpp">
+      <Filter>src\fc</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\static_variant.hpp">
+      <Filter>src\fc</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\string.hpp">
+      <Filter>src\fc</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\time.hpp">
+      <Filter>src\fc</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\tuple.hpp">
+      <Filter>src\fc</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\uint128.hpp">
+      <Filter>src\fc</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\unique_ptr.hpp">
+      <Filter>src\fc</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\utf8.hpp">
+      <Filter>src\fc</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\utility.hpp">
+      <Filter>src\fc</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\variant.hpp">
+      <Filter>src\fc</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\variant_object.hpp">
+      <Filter>src\fc</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\vector.hpp">
+      <Filter>src\fc</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\vector_fwd.hpp">
+      <Filter>src\fc</Filter>
+    </ClInclude>
+    <ClInclude Include="fc\wait_any.hpp">
+      <Filter>src\fc</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

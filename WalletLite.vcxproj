@@ -4231,7 +4231,6 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="achainlightwalletapi.h" />
     <CustomBuild Include="trackmgr.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Moc%27ing trackmgr.h...</Message>
@@ -4340,8 +4339,40 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DNDEBUG -DWIN64 -DQT_SQL_LIB -DNOMINMAX -D_UNICODE  "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtANGLE" "-I$(QTDIR)\include\QtXml" "-I$(QTDIR)\include\QtNetwork" "-I$(QTDIR)\include\QtCore" "-I.\release" "-I." "-I$(QTDIR)\mkspecs\win32-msvc2013" "-I.\GeneratedFiles" "-I$(QTDIR)\include\QtSql" "-I$(QTDIR)\include\QtCharts" "-I$(QTDIR)\include\QtWebEngineWidgets"</Command>
     </CustomBuild>
-    <ClInclude Include="CyoDecode.h" />
-    <ClInclude Include="CyoEncode.h" />
+    <ClInclude Include="blockchain\AccountEntry.hpp" />
+    <ClInclude Include="blockchain\AccountOperations.hpp" />
+    <ClInclude Include="blockchain\Address.hpp" />
+    <ClInclude Include="blockchain\api_extern.hpp" />
+    <ClInclude Include="blockchain\Asset.hpp" />
+    <ClInclude Include="blockchain\AssetEntry.hpp" />
+    <ClInclude Include="blockchain\AssetOperations.hpp" />
+    <ClInclude Include="blockchain\BalanceEntry.hpp" />
+    <ClInclude Include="blockchain\BalanceOperations.hpp" />
+    <ClInclude Include="blockchain\Block.hpp" />
+    <ClInclude Include="blockchain\BlockEntry.hpp" />
+    <ClInclude Include="blockchain\Checkpoints.hpp" />
+    <ClInclude Include="blockchain\Condition.hpp" />
+    <ClInclude Include="blockchain\Config.hpp" />
+    <ClInclude Include="blockchain\ContractOperations.hpp" />
+    <ClInclude Include="blockchain\DelegateConfig.hpp" />
+    <ClInclude Include="blockchain\EventOperations.hpp" />
+    <ClInclude Include="blockchain\Exceptions.hpp" />
+    <ClInclude Include="blockchain\ExtendedAddress.hpp" />
+    <ClInclude Include="blockchain\ImessageOperations.hpp" />
+    <ClInclude Include="blockchain\OperationFactory.hpp" />
+    <ClInclude Include="blockchain\Operations.hpp" />
+    <ClInclude Include="blockchain\PropertyEntry.hpp" />
+    <ClInclude Include="blockchain\PtsAddress.hpp" />
+    <ClInclude Include="blockchain\SlateEntry.hpp" />
+    <ClInclude Include="blockchain\SlateOperations.hpp" />
+    <ClInclude Include="blockchain\SlotEntry.hpp" />
+    <ClInclude Include="blockchain\StorageOperations.hpp" />
+    <ClInclude Include="blockchain\StorageTypes.hpp" />
+    <ClInclude Include="blockchain\Time.hpp" />
+    <ClInclude Include="blockchain\Transaction.hpp" />
+    <ClInclude Include="blockchain\TransactionOperations.hpp" />
+    <ClInclude Include="blockchain\Types.hpp" />
+    <ClInclude Include="blockchain\WithdrawTypes.hpp" />
     <ClInclude Include="database.h" />
     <ClInclude Include="fc\aligned.hpp" />
     <ClInclude Include="fc\array.hpp" />
