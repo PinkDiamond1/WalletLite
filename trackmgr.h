@@ -13,7 +13,7 @@
 struct TrackData
 {
 	QString type;
-	QString uuid;
+	QString uid;
 	QString platform;
 	QString mac;
 
@@ -21,7 +21,7 @@ struct TrackData
 	{
 		QJsonObject obj;
 		obj.insert("type", type);
-		obj.insert("uuid", uuid);
+		obj.insert("uid", uid);
 		obj.insert("platform", platform);
 		obj.insert("mac", mac);
 
@@ -60,7 +60,7 @@ public slots :
 
 private:
 	static TrackMgr* _track_mgr;
-	QString uuid = "";
+	QString uid = "";
 	QString macAddr = "";
 	QTimer* timerHeartbeat = nullptr;
 	QVector<TrackData> trackMsgVec;

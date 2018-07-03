@@ -31,7 +31,7 @@ void TrackMgr::destroyInstance()
 
 TrackMgr::TrackMgr()
 {
-    uuid = getUid();
+    uid = getUid();
 	macAddr = getHostMacAddress();
 	trackMsgVec.clear();
 }
@@ -106,7 +106,7 @@ void TrackMgr::stratAutoHeartbeat()
 
 void TrackMgr::sendTrackData(TrackData& tData)
 {
-	tData.uuid = uuid;
+	tData.uid = uid;
 	tData.mac = macAddr;
 #ifdef WIN32
 	tData.platform = "win";
