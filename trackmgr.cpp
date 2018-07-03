@@ -31,7 +31,7 @@ void TrackMgr::destroyInstance()
 
 TrackMgr::TrackMgr()
 {
-	uuid = getUuid();
+    uuid = getUid();
 	macAddr = getHostMacAddress();
 	trackMsgVec.clear();
 }
@@ -45,45 +45,53 @@ TrackMgr::~TrackMgr()
 	}
 }
 
-QString TrackMgr::getUuid()
+QString TrackMgr::getUid()
 {
 #ifdef WIN32
 	QSettings settings("HKEY_CURRENT_USER\\Software\\AchainWalletLite", QSettings::NativeFormat);
-	QString _uuid = settings.value("uuid", "").toString();
-	if (_uuid.isEmpty())
+    QString _uid = settings.value("uid", "").toString();
+    if (_uid.isEmpty())
 	{
-		_uuid = genUuid();
-		settings.setValue("uuid", _uuid);
+        _uid = genUid();
+        settings.setValue("uid", _uid);
 	}
 #else
-
+    QString _uid = genUid();
 #endif
 
-	return _uuid;
+    return _uid;
+}
+
+QString TrackMgr::genUid()
+{
+#ifdef WIN32
+    QString _uid("win");
+    _uid += QUuid::createUuid().toString().remove("{").remove("}").remove("-");
+#else
+    QString _uid("mac");
+    _uid += getHostMacAddress().remove(":").toLower();
+#endif
+
+    return _uid;
 }
 
 QString TrackMgr::getHostMacAddress()
 {
-	QList<QNetworkInterface> nets = QNetworkInterface::allInterfaces();
-	int nCnt = nets.count();
-	QString strMacAddr = "";
-	for (int i = 0; i < nCnt; i++)
-	{
-		// 如果此网络接口被激活并且正在运行并且不是回环地址，则就是我们需要找的Mac地址
-		if (nets[i].flags().testFlag(QNetworkInterface::IsUp)
-			&& nets[i].flags().testFlag(QNetworkInterface::IsRunning) 
-			&& !nets[i].flags().testFlag(QNetworkInterface::IsLoopBack))
-		{
-			strMacAddr = nets[i].hardwareAddress();
-			break;
-		}
-	}
-	return strMacAddr;
-}
-
-QString TrackMgr::genUuid()
-{
-	return QUuid::createUuid().toString().remove("{").remove("}").remove("-");
+    QList<QNetworkInterface> nets = QNetworkInterface::allInterfaces();
+    int nCnt = nets.count();
+    QString strMacAddr = "";
+    for (int i = 0; i < nCnt; i++)
+    {
+        // 如果此网络接口被激活并且正在运行并且不是回环地址，则就是我们需要找的Mac地址
+        if (nets[i].flags().testFlag(QNetworkInterface::IsUp)
+            && nets[i].flags().testFlag(QNetworkInterface::IsRunning)
+            && !nets[i].flags().testFlag(QNetworkInterface::IsLoopBack))
+        {
+            strMacAddr = nets[i].hardwareAddress();
+            break;
+        }
+    }
+    return strMacAddr;
 }
 
 void TrackMgr::stratAutoHeartbeat()
@@ -103,7 +111,7 @@ void TrackMgr::sendTrackData(TrackData& tData)
 #ifdef WIN32
 	tData.platform = "win";
 #else
-	tata.platform = "mac";
+    tData.platform = "mac";
 #endif
 
 	trackMsgVec.push_back(tData);

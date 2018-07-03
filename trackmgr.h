@@ -46,9 +46,9 @@ private:
 	TrackMgr();
 	~TrackMgr();
 
-	QString getUuid();
-	QString getHostMacAddress();
-	QString genUuid();
+    QString getUid();
+    QString genUid();
+    QString getHostMacAddress();
 	void stratAutoHeartbeat();
 	void sendTrackData(TrackData& trackData);
 

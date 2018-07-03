@@ -80,7 +80,7 @@ HEADERS += ./goopal.h \
     ./thirddatamgr.h \
     ./functionbarbtn.h \
     ./macro.h \
-    $$PWD/trackmgr.h
+    ./trackmgr.h
 
 SOURCES += ./goopal.cpp \
     ./main.cpp \
@@ -152,7 +152,7 @@ SOURCES += ./goopal.cpp \
     ./quotationlistview.cpp \
     ./thirddatamgr.cpp \
     ./functionbarbtn.cpp \
-    $$PWD/trackmgr.cpp
+    ./trackmgr.cpp
 
 FORMS += ./accountcellwidget.ui \
     ./control/accountdetailwidget.ui \
