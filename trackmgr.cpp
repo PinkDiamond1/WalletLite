@@ -126,7 +126,6 @@ void TrackMgr::sendTrackDataToServer()
 	const TrackData& tData = trackMsgVec.at(0);
 	QByteArray postData = tData.toJsonByteArray();
 	postData = QString("data=").toUtf8() + postData;
-	trackMsgVec.pop_front();
 
 	QString url = TRACK_URL;
 	QNetworkRequest request;
@@ -151,6 +150,8 @@ void TrackMgr::requestTrackFinished()
 {
 	if (netReplyTrack == nullptr)
 		return;
+
+	trackMsgVec.pop_front();
 
 	netReplyTrack->deleteLater();
 	netReplyTrack = nullptr;
