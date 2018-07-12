@@ -79,8 +79,13 @@ void ImportDialog::on_importBtn_clicked()
 		QFile file(ui->privateKeyLineEdit->text());
         if( file.open(QIODevice::ReadOnly))
 		{
-            QByteArray ba = QByteArray::fromBase64( file.readAll());
-            privatekey = QString(ba);
+			QByteArray oriBytes = file.readAll();
+			QByteArray resBytes = QByteArray::fromBase64(oriBytes);
+			if (oriBytes == resBytes.toBase64())
+				privatekey = QString(resBytes);
+			else
+				privatekey = QString(oriBytes);
+
             file.close();
         }
 		else

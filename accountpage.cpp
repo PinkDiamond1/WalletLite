@@ -85,16 +85,16 @@ OperationsWidget::OperationsWidget(AccountPage* page)
 
 	connect(deleteBtn, SIGNAL(clicked()), this, SLOT(deleteBtnClicked()));
 
-	importBtn = new QToolButton(this);
-	importBtn->setGeometry(QRect(84, (tabelWidgetHeight - 30) / 2, 76, 30));
-	importBtn->setFont(font2);
-	importBtn->setCursor(QCursor(Qt::PointingHandCursor));
-	importBtn->setFont(QFont("Microsoft Yahei", 11));
-	importBtn->setText(tr("Export"));
-	importBtn->setStyleSheet(QLatin1String("QToolButton{background-color:#999999;color:#ffffff;border:1px solid rgb(187,187,187);border-radius:3px;}"
+	exportBtn = new QToolButton(this);
+	exportBtn->setGeometry(QRect(84, (tabelWidgetHeight - 30) / 2, 76, 30));
+	exportBtn->setFont(font2);
+	exportBtn->setCursor(QCursor(Qt::PointingHandCursor));
+	exportBtn->setFont(QFont("Microsoft Yahei", 11));
+	exportBtn->setText(tr("Export"));
+	exportBtn->setStyleSheet(QLatin1String("QToolButton{background-color:#999999;color:#ffffff;border:1px solid rgb(187,187,187);border-radius:3px;}"
 		"QToolButton:hover{background-color:#62a9f8;}"));
 
-	connect(importBtn, SIGNAL(clicked()), this, SLOT(importBtnClicked()));
+	connect(exportBtn, SIGNAL(clicked()), this, SLOT(exportBtnClicked()));
 }
 
 void OperationsWidget::deleteBtnClicked()
@@ -102,7 +102,7 @@ void OperationsWidget::deleteBtnClicked()
 	accountPage->deleteAccount(accountName);
 }
 
-void OperationsWidget::importBtnClicked()
+void OperationsWidget::exportBtnClicked()
 {
 	ExportDialog exportDialog(accountName);
 	exportDialog.hiddenCancelBtn();

@@ -48,12 +48,12 @@ public:
 
 	public slots:
 	void deleteBtnClicked();
-	void importBtnClicked();
+	void exportBtnClicked();
 
 private:
 	AccountPage* accountPage;
 	QToolButton* deleteBtn;
-	QToolButton* importBtn;
+	QToolButton* exportBtn;
 	QString accountName;
 };
 
