@@ -7,6 +7,7 @@
 #include <map>
 
 #include "misc.h"
+#include "macro.h"
 
 #ifdef TEST_CHAIN
 /*测试链ID*/
