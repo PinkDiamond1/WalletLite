@@ -4339,6 +4339,7 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DNDEBUG -DWIN64 -DQT_SQL_LIB -DNOMINMAX -D_UNICODE  "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtANGLE" "-I$(QTDIR)\include\QtXml" "-I$(QTDIR)\include\QtNetwork" "-I$(QTDIR)\include\QtCore" "-I.\release" "-I." "-I$(QTDIR)\mkspecs\win32-msvc2013" "-I.\GeneratedFiles" "-I$(QTDIR)\include\QtSql" "-I$(QTDIR)\include\QtCharts" "-I$(QTDIR)\include\QtWebEngineWidgets"</Command>
     </CustomBuild>
+    <ClInclude Include="achainlightwalletapi.h" />
     <ClInclude Include="blockchain\AccountEntry.hpp" />
     <ClInclude Include="blockchain\AccountOperations.hpp" />
     <ClInclude Include="blockchain\Address.hpp" />

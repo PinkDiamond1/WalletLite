@@ -125,11 +125,10 @@ void TrackMgr::sendTrackDataToServer()
 
 	const TrackData& tData = trackMsgVec.at(0);
 	QByteArray postData = tData.toJsonByteArray();
-	postData = QString("data=").toUtf8() + postData;
 
 	QString url = TRACK_URL;
 	QNetworkRequest request;
-	request.setHeader(QNetworkRequest::ContentTypeHeader, "application/x-www-form-urlencoded");
+	request.setHeader(QNetworkRequest::ContentTypeHeader, "text/plain");
 	request.setHeader(QNetworkRequest::ContentLengthHeader, postData.length());
 
 	if (url.startsWith("https")) {

@@ -1723,6 +1723,9 @@
     <ClInclude Include="fc\wait_any.hpp">
       <Filter>src\fc</Filter>
     </ClInclude>
+    <ClInclude Include="achainlightwalletapi.h">
+      <Filter>src\fc</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\fc\utf8\ReleaseNotes">

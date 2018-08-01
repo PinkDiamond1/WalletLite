@@ -230,7 +230,7 @@ void Frame::alreadyLogin()
 	showFunctionBar();
 	showHomePage();
 
-	//TrackMgr::getInstance()->login();
+	TrackMgr::getInstance()->login();
 }
 
 void Frame::getAccountInfo()

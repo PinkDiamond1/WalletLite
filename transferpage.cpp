@@ -233,7 +233,7 @@ void TransferPage::walletCheckAddress(QString address)
 			if (currencyInfo.isAsset())
 			{
 				DataMgr::getInstance()->walletTransferToAddressWithId(amount_text, currencyInfo.assetId(), accountName, account_text, "");
-                qDebug() << "walletTransferToAddressWithId" + accountName;
+                qDebug() << "walletTransferToAddressWithId == " + accountName;
                 showWaitingPage();
 			}
 			else {

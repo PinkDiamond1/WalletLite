@@ -14,13 +14,19 @@
 #define UPDATE_TOOL_NAME "AchainUp.exe"
 
 #ifdef WIN32
-#define ACHAIN_WALLET_VERSION "2.0.1"
+#define ACHAIN_WALLET_VERSION "2.0.3"
 #else
-#define ACHAIN_WALLET_VERSION "2.0.1"
+#define ACHAIN_WALLET_VERSION "2.0.3"
 #endif
 #define ACHAIN_WALLET_VERSION_STR "v" ACHAIN_WALLET_VERSION
 
-#define TEST_CHAIN
+//#define TEST_CHAIN
+
+#ifdef TEST_CHAIN
+#define CHAIN_ID ""
+#else
+#define CHAIN_ID ""
+#endif
 
 #ifdef TEST_CHAIN
 #define ACHAIN_BROWSER_URL ""
@@ -40,6 +46,6 @@
 #define BROADCAST_URL BROWSER_SERVER_DOMAIN ""
 #define QUOTATION_URL WALLET_SERVER_DOMAIN ""
 #define EXCHANGE_RATE_URL WALLET_SERVER_DOMAIN ""
-#define TRACK_URL WALLET_SERVER_DOMAIN ""
+#define TRACK_URL ""
 
 #endif // __MACRO_H__

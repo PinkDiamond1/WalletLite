@@ -9,14 +9,6 @@
 #include "misc.h"
 #include "macro.h"
 
-#ifdef TEST_CHAIN
-/*测试链ID*/
-#define CHAIN_ID "5260ca3470af412ea1dc9fd647903901b9adb4d618effec8f4f9479eaa0c9c69"
-#else
-/*正式链ID*/
-#define CHAIN_ID "6a1cb528f6e797e58913bff7a45cdd4709be75114ccd1ccb0e611b808f4d1b75"
-#endif
-
 namespace thinkyoung {
 namespace blockchain {
     Address generate_address();
