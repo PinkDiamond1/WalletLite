@@ -109,15 +109,14 @@ void DataMgr::parseContract(QString& json_str)
 
 				currencyInfo.id = con_object.value("id").toInt();
 				currencyInfo.name = con_object.value("name").toString();
+
+				if (currencyInfo.name == "ECT")
+					continue;
+
 				currencyInfo.contractId = con_object.value("contractId").toString();
 				currencyInfo.coinType = con_object.value("coinType").toString();
 
 				_currency_name_map.insert(currencyInfo.coinType, true);
-
-				//过滤掉多资产币
-				//if (currencyInfo.isAsset())
-				//	continue;
-
 				_currency_list.push_back(currencyInfo);
 			}
         }
