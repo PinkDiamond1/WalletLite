@@ -112,6 +112,12 @@
     <Filter Include="src\fc\reflect">
       <UniqueIdentifier>{dac671e3-a6c4-47b5-a319-02b6ee9c3b1f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\wallet-view\delegatespage">
+      <UniqueIdentifier>{07cff98e-6243-445b-94de-0131f1e7cff9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\wallet-view\delegatespage">
+      <UniqueIdentifier>{fc8ad17b-8c71-4a93-85a5-061b9c5996ab}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Debug\moc_accountcellwidget.cpp">
@@ -876,6 +882,24 @@
     <ClCompile Include="Release\moc_trackmgr.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="src\blockchain\SlateEntry.cpp">
+      <Filter>src\blockchain</Filter>
+    </ClCompile>
+    <ClCompile Include="Debug\moc_delegatespage.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="Release\moc_delegatespage.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="delegatespage.cpp">
+      <Filter>Source Files\wallet-view\delegatespage</Filter>
+    </ClCompile>
+    <ClCompile Include="delegateslistmodel.cpp">
+      <Filter>Source Files\wallet-view\delegatespage</Filter>
+    </ClCompile>
+    <ClCompile Include="delegateslistdelegate.cpp">
+      <Filter>Source Files\wallet-view\delegatespage</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="datamgr.h">
@@ -1106,6 +1130,12 @@
     </CustomBuild>
     <CustomBuild Include="trackmgr.h">
       <Filter>Header Files\blockchain</Filter>
+    </CustomBuild>
+    <CustomBuild Include="delegatespage.h">
+      <Filter>Header Files\wallet-view\delegatespage</Filter>
+    </CustomBuild>
+    <CustomBuild Include="delegatespage.ui">
+      <Filter>Form Files</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
@@ -1725,6 +1755,15 @@
     </ClInclude>
     <ClInclude Include="achainlightwalletapi.h">
       <Filter>src\fc</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_delegatespage.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="delegateslistmodel.h">
+      <Filter>Header Files\wallet-view\delegatespage</Filter>
+    </ClInclude>
+    <ClInclude Include="delegateslistdelegate.h">
+      <Filter>Header Files\wallet-view\delegatespage</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

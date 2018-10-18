@@ -24,14 +24,14 @@ namespace thinkyoung {
 
         TransactionIdType SignedTransaction::id()const
         {
-            //�ֶ�result_trx_type��result_trx_id����������trx id
-            SignedTransaction trx = *this;
-            trx.result_trx_type = origin_transaction;
-            trx.result_trx_id = TransactionIdType();
+			//字段result_trx_type与result_trx_id不参与计算trx id
+			SignedTransaction trx = *this;
+			trx.result_trx_type = origin_transaction;
+			trx.result_trx_id = TransactionIdType();
 
-            fc::sha512::encoder enc;
-            fc::raw::pack(enc, trx);
-            return fc::ripemd160::hash(enc.result());
+			fc::sha512::encoder enc;
+			fc::raw::pack(enc, trx);
+			return fc::ripemd160::hash(enc.result());
         }
 
         size_t SignedTransaction::data_size()const

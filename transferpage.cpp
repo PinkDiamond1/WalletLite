@@ -4,7 +4,7 @@
 #include <QDir>
 #include <QClipboard>
 
-#ifdef WIN32 
+#ifdef WIN32
 #include <windows.h>
 #endif
 
@@ -158,8 +158,9 @@ TransferPage::TransferPage(QString name,QWidget *parent) :
 	inited = true;
 
     connect(DataMgr::getInstance(), &DataMgr::onWalletTransferToAddressWithId, this, &TransferPage::walletTransferToAddress);
-	connect(DataMgr::getDataMgr(), &DataMgr::onCallContract, this, &TransferPage::tokenTransferTo);
+	connect(DataMgr::getInstance(), &DataMgr::onCallContract, this, &TransferPage::tokenTransferTo);
 	connect(DataMgr::getInstance(), &DataMgr::onWalletCheckAddress, this, &TransferPage::walletCheckAddress);
+	connect(DataMgr::getInstance(), &DataMgr::onWalletGetAddressBalances, this, &TransferPage::onGetAddressBalances);
 
 	Frame* frame = dynamic_cast<Frame*>(Goopal::getInstance()->mainFrame);
 	connect(frame, &Frame::updateAccountBalance, this, &TransferPage::updateBalance);
@@ -167,6 +168,9 @@ TransferPage::TransferPage(QString name,QWidget *parent) :
 	showBalance();
 	setAssertType();
 	checkAmountValid(ui->amountLineEdit->text().toDouble());
+
+	//投票状态
+	ui->voteCheckBox->setChecked(DataMgr::getInstance()->isVoteForDelegates());
 
     DLOG_QT_WALLET_FUNCTION_END;
 }
@@ -190,8 +194,8 @@ void TransferPage::walletCheckAddress(QString address)
 
     if (DataMgr::getInstance()->walletCheckAddress(address))
 	{
-		QString amount_text(ui->amountLineEdit->text());
-        QString account_text(ui->sendtoLineEdit->text());
+		amount_text = ui->amountLineEdit->text();
+        toAddressText = ui->sendtoLineEdit->text();
 
 		if (amount_text.toDouble() > -0.0000001 && amount_text.toDouble() < 0.0000001) {
 			CommonDialog tipDialog(CommonDialog::OkOnly);
@@ -225,19 +229,31 @@ void TransferPage::walletCheckAddress(QString address)
         }
 
 		QString fee_text = "0.01";
-        TransferConfirmDialog transferConfirmDialog(account_text, amount_text, fee_text, "");
+		TransferConfirmDialog transferConfirmDialog(toAddressText, amount_text, fee_text, "");
 		bool yOrN = transferConfirmDialog.pop();
 
 		if (yOrN) {
 			CurrencyInfo currencyInfo = DataMgr::getInstance()->getCurrentCurrency();
 			if (currencyInfo.isAsset())
 			{
-				DataMgr::getInstance()->walletTransferToAddressWithId(amount_text, currencyInfo.assetId(), accountName, account_text, "");
-                qDebug() << "walletTransferToAddressWithId == " + accountName;
+				currencyAssetId = currencyInfo.assetId();
+
+				if (currencyAssetId == 0)
+				{
+					auto from_address = DataMgr::getInstance()->getAccountAddr(accountName);
+					DataMgr::getInstance()->walletGetAddressBalances(from_address);
+				}
+				else
+				{
+					DataMgr::getInstance()->walletTransferToAddressWithId(amount_text, currencyAssetId, accountName, toAddressText, "");
+					qDebug() << "walletTransferToAddressWithId == " + accountName;
+				}
+				
                 showWaitingPage();
 			}
-			else {
-				DataMgr::getInstance()->tokenTransferTo(accountName, currencyInfo.name, account_text, amount_text.toDouble(), 0.03, "");
+			else
+			{
+				DataMgr::getInstance()->tokenTransferTo(accountName, currencyInfo.name, toAddressText, amount_text.toDouble(), 0.03, "");
                 showWaitingPage();
 			}
         }
@@ -249,6 +265,18 @@ void TransferPage::walletCheckAddress(QString address)
 		tipDialog.pop();
 	}
     DLOG_QT_WALLET_FUNCTION_END;
+}
+
+void TransferPage::onGetAddressBalances(bool success, const QVector<BalanceInfo>& balances)
+{
+	if (success)
+	{
+		DataMgr::getInstance()->walletTransferToAddressWithId(amount_text, currencyAssetId, accountName, toAddressText, balances);
+	}
+	else
+	{
+		hideWaitingPage();
+	}
 }
 
 void TransferPage::on_accountComboBox_currentIndexChanged(const QString &arg1)
@@ -335,23 +363,24 @@ void TransferPage::checkAmountValid(double amount)
 
 void TransferPage::on_sendtoLineEdit_textChanged(const QString &arg1)
 {
-    if( ui->sendtoLineEdit->text().contains(" ") || ui->sendtoLineEdit->text().contains("\n")) { 
+    if( ui->sendtoLineEdit->text().contains(" ") || ui->sendtoLineEdit->text().contains("\n"))
+	{
 		// 不判断就remove的话 右键菜单撤销看起来等于不能用
         ui->sendtoLineEdit->setText( ui->sendtoLineEdit->text().simplified().remove(" "));
     }
 
-//    ui->sendtoLineEdit->setText( ui->sendtoLineEdit->text().remove("\n"));
-    if( ui->sendtoLineEdit->text().isEmpty() || ui->sendtoLineEdit->text().mid(0,3) == "ACT") {
-        ui->tipLabel4->hide();
+    if( ui->sendtoLineEdit->text().isEmpty() || ui->sendtoLineEdit->text().mid(0,3) == "ACT")
+	{
+		ui->tipLabel4->hide();
+		ui->voteCheckBox->show();
         return;
     }
 
-    if( ui->sendtoLineEdit->text().toInt() == 0)   // 不能是纯数字
+    if( ui->sendtoLineEdit->text().toInt() != 0) // 不能是纯数字
     {
-		//Goopal::getInstance()->postRPC( toJsonFormat( "id_blockchain_get_account_" + ui->sendtoLineEdit->text(), "blockchain_get_account", QStringList() << ui->sendtoLineEdit->text() ));
-    } else {
         ui->tipLabel4->setText(tr("Invalid address"));
-        ui->tipLabel4->show();
+		ui->tipLabel4->show();
+		ui->voteCheckBox->hide();
     }
 }
 
@@ -483,4 +512,10 @@ void TransferPage::on_assetComboBox_currentIndexChanged(int index)
 		showBalance();
 		checkAmountValid(ui->amountLineEdit->text().toDouble());
 	}
+}
+
+void TransferPage::on_voteCheckBox_clicked(bool checked)
+{
+	DataMgr::getInstance()->changeVoteForDelegatesState();
+	ui->voteCheckBox->setChecked(DataMgr::getInstance()->isVoteForDelegates());
 }

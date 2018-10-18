@@ -207,8 +207,6 @@ void AssetsListModel::clearItemDataList()
 
 void AssetsListModel::collapse(const QModelIndex& index)
 {
-    qDebug() << "collapse " << index.row();
-
 	AssetItemData* itemData = m_displayItemDataList->at(index.row());
 
 	if (itemData->children.size() == 0)

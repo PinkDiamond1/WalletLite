@@ -38,6 +38,7 @@
 #include "quotationpage.h"
 #include "thirddatamgr.h"
 #include "trackmgr.h"
+#include "delegatespage.h"
 
 #ifdef WIN32
 #include "qt_windows.h"
@@ -447,8 +448,12 @@ void Frame::closeCurrentPage()
 		case 3:
 			accountPage->close();
 			accountPage = NULL;
-            break;
+			break;
 		case 4:
+			delegatesPage->close();
+			delegatesPage = NULL;
+			break;
+		case 5:
 			quotatioPage->close();
 			quotatioPage = NULL;
             break;
@@ -522,6 +527,7 @@ void Frame::showFunctionBar()
 	connect(functionBar, SIGNAL(showBillPage(QString)), this, SLOT(showBillPage(QString)));
 	connect(functionBar, SIGNAL(showTransferPage()), this, SLOT(showTransferPage()));
 	connect(functionBar, SIGNAL(showAccountPage()), this, SLOT(showAccountPage()));
+	connect(functionBar, SIGNAL(showDelegatesPage()), this, SLOT(showDelegatesPage()));
 	connect(functionBar, SIGNAL(showQuotationPage()), this, SLOT(showQuotationPage()));
 
 	connect(functionBar, SIGNAL(showShadowWidget()), this, SLOT(shadowWidgetShow()));
@@ -575,6 +581,18 @@ void Frame::showTransferPage(QString accountName)
 	getAccountInfo();
 }
 
+void Frame::showDelegatesPage()
+{
+	closeCurrentPage();
+
+	delegatesPage = new DelegatesPage(this);
+	delegatesPage->move(134, 48);
+	delegatesPage->setAttribute(Qt::WA_DeleteOnClose);
+	delegatesPage->show();
+
+	currentPageId = 4;
+}
+
 void Frame::showQuotationPage()
 {
 	DLOG_QT_WALLET_FUNCTION_BEGIN;
@@ -585,7 +603,7 @@ void Frame::showQuotationPage()
 	quotatioPage->setAttribute(Qt::WA_DeleteOnClose);
 	quotatioPage->show();
 
-	currentPageId = 4;
+	currentPageId = 5;
 	DLOG_QT_WALLET_FUNCTION_END;
 }
 

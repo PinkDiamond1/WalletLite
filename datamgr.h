@@ -2,7 +2,6 @@
 #define __DATA_MGR_H__
 
 #include "misc.h"
-#include "tokentransaction.h"
 
 #include <QObject>
 #include <QStringList>
@@ -10,7 +9,14 @@
 #include <QNetworkReply>
 #include <QSettings>
 #include <QTimer>
+#include <QRect>
 
+#include "tokentransaction.h"
+#include "blockchain/SlateEntry.hpp"
+#include "blockchain/Types.hpp"
+#include "blockchain/Transaction.hpp"
+
+using namespace thinkyoung;
 
 enum TransactionType {
 	normal_transaction = 0,
@@ -99,13 +105,33 @@ struct TokenAccountInfo {
 	QString balance;
 };
 
+struct DelegateAccount
+{
+	int idx;
+	int id;
+	QString name;
+	QString votes_num;
+	QString votes_percent;
+
+	QRect checkboxRect; //用于检测是否点中复选框
+};
+Q_DECLARE_METATYPE(DelegateAccount*)
+
+struct BalanceInfo
+{
+	int assetId;
+	uint64_t slateId;
+	QString balance_id;
+	QString owner;
+	int64_t balance;
+};
+
 class DataMgr : public QObject {
 	Q_OBJECT
 public:
 	static DataMgr* getDataMgr();
 	static DataMgr* getInstance();
 	static void    deleteDataMgr();
-
 
 	//QString language;
 	int lockMinutes;
@@ -138,27 +164,25 @@ public:
 	bool walletCheckPassphrase(const QString& password);
     bool walletCheckAddress(const QString& address);
     bool walletAccountCreate(QString& account_name);
-
-    void walletAccountSetApproval(QString& account_name, int approval);
+	void walletGetAddressBalances(const QString& address);
 	void walletTransferToAddressWithId(const QString& amount_to_transfer, int asset_id, const QString& from_account_name, const QString& to_address, const QString& memo_message);
-
+	void walletTransferToAddressWithId(const QString& amount_to_transfer, int asset_id, const QString& from_account_name, const QString& to_address, const QVector<BalanceInfo>& balances);
 	void walletAccountRegiste(QString& account_name, QString& pay_from_account, QString& public_data, int delegate_pay_rate, QString& account_type);
 	void walletListAccounts();
     void walletUpdateAccounts();
 	void walletAccountRename(QString& current_name, QString& new_name);
     void walletAccountBalance(const QString& account_name);
-
 	bool walletAccountDelete(QString& account_name);
 
-    void tokenQueryTransferlog(QString conAddr, QString call_name);
 	void tokenTransferTo(QString call_name, QString tokenType, QString to_address, double amount, double fee, QString remark);
 
 	// contract
 	void callContract(QString& contract, QString& call_name,
 		QString& function_name, QString& params,
 		QString& asset_symbol, double call_limit);
-	void callContractTesting(QString& contract, QString& call_name,
-		QString& function_name, QString& params, QString& asset_symbol);
+
+	void walletDelegateAccounts(int page_n, int per_page_n = 10);
+	void walletDelegateAccountsByIds(const QVector<int>& ids);
 
 public:
 	QSettings* getSettings();
@@ -187,27 +211,36 @@ public:
 	void setLanguage(const QString& lang);
     QString getLanguage() { return language; }
     QString getConfigPath() { return _tool_config_path + "/config.ini"; }
+
 	bool isHiddenTotalAsset();
 	void changeHiddenTotalAssetState();
+
+	bool isVoteForDelegates();
+	void changeVoteForDelegatesState();
 
     void broadcast(const QString& json);
 
 	bool canRequestBalance();
 
+	const QVector<DelegateAccount>* getVoteDelegateAccounts();
+	bool saveVoteDelegateAccount(const DelegateAccount& delegateAccount);
+	bool deleteVoteDelegateAccount(int accountId);
+	bool isVoteDelegate(int accountId);
+	void sortVoteDelegateAccount();
+
 private:
     void parseContract(QString& json);
-
 	void initSettings();
 	void unInitSettings();
-
 	void getSystemEnvironmentPath();
 	void changeToToolConfigPath();
-
 	void startQueryBalance();
 
+	void setDelegateSlate(blockchain::SignedTransaction& transaction);
+
 public slots:
-	void onFinished();
-	void onError(QNetworkReply::NetworkError errorCode);
+	void onFetchAssetInfoFinished();
+	void onFetchAssetInfoError(QNetworkReply::NetworkError errorCode);
     void onbroadcastError(QNetworkReply::NetworkError errorCode);
     void fetchAssetInfo();
     void onbroadcastFinished();
@@ -215,6 +248,15 @@ public slots:
     void qureyBalanceHttpFinished();
 	void qureyBalanceHttpError(QNetworkReply::NetworkError errorCode);
 	void delayQueryBalance();
+
+	void onDelegateAccountsFinished();
+	void onDelegateAccountsError(QNetworkReply::NetworkError errorCode);
+
+	void onDelegateAccountsByIdsFinished();
+	void onDelegateAccountsByIdsError(QNetworkReply::NetworkError errorCode);
+
+	void onGetAddressBalancesFinished();
+	void onGetAddressBalancesError(QNetworkReply::NetworkError errorCode);
 
 signals:
 	void finished();
@@ -295,7 +337,6 @@ signals:
 	void onWalletGetAccountPublicAddress(QString);
 	void onWalletAccountRename(QString);
     void onWalletAccountBalance();
-	void onWalletAccountBalanceIds(QString);
 	void onWalletDelegateWithdrawPay(QString);
 	void onWalletDelegatePayBalanceQuery(QString);
 	void onWalletGetDelegateStatue(QString);
@@ -305,6 +346,9 @@ signals:
 	void onWalletDumpPrivateKey(QString);
     void onWalletDelegateSetBlockProduction(QString);
 	void onWalletAccountUpdateRegistration(QString);
+	void onWalletDelegateAccounts(bool, int, int, const QVector<DelegateAccount>&);
+	void onWalletDelegateAccountsByIds(bool, const QVector<DelegateAccount>&);
+	void onWalletGetAddressBalances(bool, const QVector<BalanceInfo>&);
 
 private:
 	static DataMgr* _data_mgr;
@@ -335,6 +379,14 @@ private:
     bool isRequestingBalance;
 
 	bool hiddenTotalAssetVal = false;
+	bool voteForDelegates = false;
 
+	QVector<DelegateAccount>* pVoteDelegateAccounts = nullptr;
+
+	QNetworkReply* fetchAssetInfoReply = nullptr;
+	QNetworkReply* broadcastReply = nullptr;
+	QNetworkReply* delegateAccountsReply = nullptr;
+	QNetworkReply* delegateAccountsByIdsReply = nullptr;
+	QNetworkReply* getAddressBalancesReply = nullptr;
 };
 #endif // Misc_H

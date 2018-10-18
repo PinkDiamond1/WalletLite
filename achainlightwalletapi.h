@@ -8,6 +8,7 @@
 
 #include "misc.h"
 #include "macro.h"
+#include "datamgr.h"
 
 namespace thinkyoung {
 namespace blockchain {
@@ -21,7 +22,15 @@ namespace blockchain {
             int asset_id,
             const std::string& from_address,
             const std::string& to_address,
-            const std::string& memo_message);
+			const std::string& memo_message);
+
+	SignedTransaction wallet_transfer_to_address(
+		const std::string& amount_to_transfer,
+		int asset_id,
+		const std::string& from_address,
+		const std::string& to_address,
+		const QVector<BalanceInfo>& balances,
+		int& signatures_count);
 
     SignedTransaction call_contract(const string& caller,
                                    const ContractIdType contract,

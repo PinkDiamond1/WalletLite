@@ -80,7 +80,12 @@ HEADERS += ./goopal.h \
     ./thirddatamgr.h \
     ./functionbarbtn.h \
     ./macro.h \
-    ./trackmgr.h
+    ./trackmgr.h \
+    $$PWD/delegatespage.h \
+    $$PWD/delegateslistview.h \
+    $$PWD/delegateslistmodel.h \
+    $$PWD/delegateslistdelegate.h \
+    $$PWD/delegateslistmodel.h
 
 SOURCES += ./goopal.cpp \
     ./main.cpp \
@@ -152,7 +157,12 @@ SOURCES += ./goopal.cpp \
     ./quotationlistview.cpp \
     ./thirddatamgr.cpp \
     ./functionbarbtn.cpp \
-    ./trackmgr.cpp
+    ./trackmgr.cpp \
+    $$PWD/delegatespage.cpp \
+    $$PWD/delegateslistview.cpp \
+    $$PWD/delegateslistmodel.cpp \
+    $$PWD/delegateslistdelegate.cpp \
+    $$PWD/delegateslistmodel.cpp
 
 FORMS += ./accountcellwidget.ui \
     ./control/accountdetailwidget.ui \
@@ -201,7 +211,8 @@ FORMS += ./accountcellwidget.ui \
     ./homepage.ui \
     ./billpage.ui \
     ./quotationpage.ui \
-    ./noticedialog.ui
+    ./noticedialog.ui \
+    $$PWD/delegatespage.ui
 
 TRANSLATIONS += ./gop_English.ts \
     ./gop_simplified_Chinese.ts

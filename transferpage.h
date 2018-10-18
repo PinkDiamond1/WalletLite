@@ -8,6 +8,7 @@ class TransferPage;
 }
 
 class WaitingPage;
+struct BalanceInfo;
 
 #define MODULE_TRAHSFER_PAGE "TRAHSFER_PAGE"
 
@@ -48,12 +49,13 @@ private slots:
     void on_sendBtn_clicked();
     void on_amountLineEdit_textChanged(const QString &arg1);
     void on_sendtoLineEdit_textChanged(const QString &arg1);
-    void on_copyBtn_clicked();
+	void on_copyBtn_clicked();
+	void on_assetComboBox_currentIndexChanged(int index);
+	void on_voteCheckBox_clicked(bool checked);
 
     void walletTransferToAddress(bool resp_success, QString id, QString msg);
     void walletCheckAddress(QString address);
-
-    void on_assetComboBox_currentIndexChanged(int index);
+	void onGetAddressBalances(bool success, const QVector<BalanceInfo>& balances);
 
 private:
     Ui::TransferPage *ui;
@@ -62,6 +64,10 @@ private:
     QStringList contactsList;
     bool inited;
     int transfer_time;
+
+	QString amount_text;
+	int currencyAssetId;
+	QString toAddressText;
 };
 
 #endif // TRANSFERPAGE_H

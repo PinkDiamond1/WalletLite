@@ -117,7 +117,7 @@ bool DataBase::initTables()
 	}
 	else
 	{
-		qDebug() << "Error: Fail to check account table." << sql_query.lastError();
+		qDebug() << "Error: Fail to check abandon_account table." << sql_query.lastError();
 	}
 
     //init asset type table
@@ -137,6 +137,24 @@ bool DataBase::initTables()
     {
         qDebug() << "Error: Fail to check currency table." << sql_query.lastError();
     }
+
+	//init delegate account type table
+	success = sql_query.exec("select * from sqlite_master where name = 'vote_delegate_account';");
+	if (success)
+	{
+		if (!sql_query.next())
+		{
+			success = sql_query.exec("create table vote_delegate_account(account_id varchar(32) primary key, name varchar(64), votes_num varchar(64), votes_percent varchar(64));");
+			if (!success)
+			{
+				qDebug() << "Error: Fail to create vote_delegate_account table." << sql_query.lastError();
+			}
+		}
+	}
+	else
+	{
+		qDebug() << "Error: Fail to check vote_delegate_account table." << sql_query.lastError();
+	}
 
 	return true;
 }
@@ -552,6 +570,64 @@ bool DataBase::deleteAbandonAccount(const QString& name)
 	if (!success)
 	{
 		qDebug() << "Error: Fail to delete abandon account." << sql_delete.lastError();
+	}
+
+	return success;
+}
+
+QVector<DelegateAccount>* DataBase::queryDelegateAccountList()
+{
+	auto pDelegateAccountList = new QVector<DelegateAccount>();
+
+	QSqlQuery sql_query(database);
+	sql_query.prepare("select account_id, name, votes_num, votes_percent from vote_delegate_account;");
+	bool success = sql_query.exec();
+	if (success)
+	{
+		DelegateAccount delegateAccount;
+		while (sql_query.next())
+		{
+			delegateAccount.id = sql_query.value("account_id").toInt();
+			delegateAccount.name = sql_query.value("name").toString();
+			delegateAccount.votes_num = sql_query.value("votes_num").toString();
+			delegateAccount.votes_percent = sql_query.value("votes_percent").toString();
+
+			pDelegateAccountList->push_back(delegateAccount);
+		}
+	}
+	else
+		qDebug() << "Error: Fail to queryDelegateAccountList." << sql_query.lastError();
+
+	return pDelegateAccountList;
+}
+
+bool DataBase::saveDelegateAccount(const DelegateAccount& delegateAccount)
+{
+	QSqlQuery sql_query(database);
+	sql_query.prepare("insert into vote_delegate_account(account_id, name, votes_num, votes_percent) values(?, ?, ?, ?);");
+	sql_query.bindValue(0, delegateAccount.id);
+	sql_query.bindValue(1, delegateAccount.name);
+	sql_query.bindValue(2, delegateAccount.votes_num);
+	sql_query.bindValue(3, delegateAccount.votes_percent);
+
+	bool success = sql_query.exec();
+	if (!success)
+	{
+		qDebug() << "Error: Fail to insertAccount." << sql_query.lastError();
+	}
+
+	return success;
+}
+
+bool DataBase::deleteDelegateAccount(int accountId)
+{
+	QSqlQuery sql_delete(database);
+	sql_delete.prepare("delete from vote_delegate_account where account_id = ?;");
+	sql_delete.bindValue(0, accountId);
+	bool success = sql_delete.exec();
+	if (!success)
+	{
+		qDebug() << "Error: Fail to delete delegate account." << sql_delete.lastError();
 	}
 
 	return success;

@@ -33,6 +33,7 @@ class SelectGopPathWidget;
 class ShowBottomBarWidget;
 class ShadowWidget;
 class QuotationPage;
+class DelegatesPage;
 
 class Frame:public QFrame
 {
@@ -71,7 +72,6 @@ public slots:
 	void appQuit();
 
 signals:
-    void delegateListUpdated();
 	void updateAccountBalance();
 
 private slots:
@@ -82,6 +82,7 @@ private slots:
 	void showTransferPage();
 	void showTransferPage(QString);
 	void showAccountPage();
+	void showDelegatesPage();
 	void showQuotationPage();
 
     void showLockPage();
@@ -120,13 +121,14 @@ private:
 	BillPage* billPage = nullptr;
 	TransferPage* transferPage = nullptr;
 	AccountPage* accountPage = nullptr;
+	DelegatesPage* delegatesPage = nullptr;
 	QuotationPage* quotatioPage = nullptr;
 	FunctionBar* functionBar = nullptr;
 	LockPage*  lockPage = nullptr;
 	TitleBar* titleBar = nullptr;
 
     QString lastPage;
-    int currentPageId; //-1:none 0:homePage 1:billPage 2:transferPage 3:accountPage 4:quotationPage
+    int currentPageId; //-1:none 0:homePage 1:billPage 2:transferPage 3:accountPage 4:delegatesPage 5:quotationPage
 
     ShadowWidget* shadowWidget;
     QSystemTrayIcon* trayIcon;

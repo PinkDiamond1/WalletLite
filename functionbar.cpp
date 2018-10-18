@@ -31,6 +31,9 @@ ui(new Ui::FunctionBar)
 	ui->accountBtn->setPixmap(DataMgr::getDataMgr()->getWorkPath() + "pic2/account_btn.png");
 	ui->accountBtn->setBtnText(tr("Account"));
 
+	ui->delegatesBtn->setPixmap(DataMgr::getDataMgr()->getWorkPath() + "pic2/markets_btn.png");
+	ui->delegatesBtn->setBtnText(tr("Markets"));
+
 	ui->quotationBtn->setPixmap(DataMgr::getDataMgr()->getWorkPath() + "pic2/markets_btn.png");
 	ui->quotationBtn->setBtnText(tr("Markets"));
 
@@ -105,9 +108,15 @@ void FunctionBar::on_accountBtn_clicked()
 	emit showAccountPage();
 }
 
-void FunctionBar::on_quotationBtn_clicked()
+void FunctionBar::on_delegatesBtn_clicked()
 {
 	choosePage(4);
+	emit showDelegatesPage();
+}
+
+void FunctionBar::on_quotationBtn_clicked()
+{
+	choosePage(5);
 	emit showQuotationPage();
 }
 
@@ -121,48 +130,10 @@ void FunctionBar::paintEvent(QPaintEvent*)
 
 void FunctionBar::choosePage(int pageIndex)
 {
-    switch (pageIndex) {
-    case 0:
-		ui->homeBtn->setSelected(true);
-		ui->billBtn->setSelected(false);
-		ui->transferBtn->setSelected(false);
-		ui->accountBtn->setSelected(false);
-		ui->quotationBtn->setSelected(false);
-        break;
-
-	case 1:
-		ui->homeBtn->setSelected(false);
-		ui->billBtn->setSelected(true);
-		ui->transferBtn->setSelected(false);
-		ui->accountBtn->setSelected(false);
-		ui->quotationBtn->setSelected(false);
-        break;
-
-	case 2:
-		ui->homeBtn->setSelected(false);
-		ui->billBtn->setSelected(false);
-		ui->transferBtn->setSelected(true);
-		ui->accountBtn->setSelected(false);
-		ui->quotationBtn->setSelected(false);
-        break;
-
-	case 3:
-		ui->homeBtn->setSelected(false);
-		ui->billBtn->setSelected(false);
-		ui->transferBtn->setSelected(false);
-		ui->accountBtn->setSelected(true);
-		ui->quotationBtn->setSelected(false);
-        break;
-
-	case 4:
-		ui->homeBtn->setSelected(false);
-		ui->billBtn->setSelected(false);
-		ui->transferBtn->setSelected(false);
-		ui->accountBtn->setSelected(false);
-		ui->quotationBtn->setSelected(true);
-        break;
-
-    default:
-        break;
-    }
+	ui->homeBtn->setSelected(pageIndex == 0);
+	ui->billBtn->setSelected(pageIndex == 1);
+	ui->transferBtn->setSelected(pageIndex == 2);
+	ui->accountBtn->setSelected(pageIndex == 3);
+	ui->delegatesBtn->setSelected(pageIndex == 4);
+	ui->quotationBtn->setSelected(pageIndex == 5);
 }

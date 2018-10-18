@@ -26,6 +26,7 @@ signals:
 	void showTransferPage();
 	void showAccountPage();
 	void showQuotationPage();
+	void showDelegatesPage();
 
     void showShadowWidget();
     void hideShadowWidget();
@@ -36,6 +37,7 @@ private slots:
 	void on_transferBtn_clicked();
 	void on_accountBtn_clicked();
     void on_quotationBtn_clicked();
+    void on_delegatesBtn_clicked();
 
 private:
     Ui::FunctionBar *ui;

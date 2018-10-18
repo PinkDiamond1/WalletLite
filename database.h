@@ -31,6 +31,10 @@ public:
 	bool abandonAccount(const QString& name);
 	bool deleteAbandonAccount(const QString& name);
 	QString queryFormerNameByAddress(const QString& address);
+	
+	QVector<DelegateAccount>* queryDelegateAccountList();
+	bool saveDelegateAccount(const DelegateAccount& delegateAccount);
+	bool deleteDelegateAccount(int accountId);
 
 private:
 	DataBase();

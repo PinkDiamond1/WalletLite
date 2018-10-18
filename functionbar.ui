@@ -36,7 +36,7 @@
      <x>2</x>
      <y>34</y>
      <width>134</width>
-     <height>88</height>
+     <height>73</height>
     </rect>
    </property>
    <property name="font">
@@ -74,9 +74,9 @@
    <property name="geometry">
     <rect>
      <x>2</x>
-     <y>122</y>
+     <y>107</y>
      <width>134</width>
-     <height>88</height>
+     <height>73</height>
     </rect>
    </property>
    <property name="font">
@@ -108,9 +108,9 @@
    <property name="geometry">
     <rect>
      <x>2</x>
-     <y>210</y>
+     <y>180</y>
      <width>134</width>
-     <height>88</height>
+     <height>73</height>
     </rect>
    </property>
    <property name="font">
@@ -142,9 +142,9 @@
    <property name="geometry">
     <rect>
      <x>2</x>
-     <y>386</y>
+     <y>399</y>
      <width>134</width>
-     <height>88</height>
+     <height>73</height>
     </rect>
    </property>
    <property name="font">
@@ -179,9 +179,9 @@
    <property name="geometry">
     <rect>
      <x>2</x>
-     <y>298</y>
+     <y>253</y>
      <width>134</width>
-     <height>88</height>
+     <height>73</height>
     </rect>
    </property>
    <property name="font">
@@ -233,12 +233,47 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
+  <widget class="FunctionBarBtn" name="delegatesBtn">
+   <property name="geometry">
+    <rect>
+     <x>2</x>
+     <y>326</y>
+     <width>134</width>
+     <height>73</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>微软雅黑</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>24</width>
+     <height>24</height>
+    </size>
+   </property>
+   <property name="toolButtonStyle">
+    <enum>Qt::ToolButtonTextBesideIcon</enum>
+   </property>
+  </widget>
   <zorder>billBtn</zorder>
   <zorder>transferBtn</zorder>
   <zorder>quotationBtn</zorder>
   <zorder>accountBtn</zorder>
   <zorder>versionLabel</zorder>
   <zorder>homeBtn</zorder>
+  <zorder>delegatesBtn</zorder>
  </widget>
  <customwidgets>
   <customwidget>
