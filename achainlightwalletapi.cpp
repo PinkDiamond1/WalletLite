@@ -185,6 +185,9 @@ SignedTransaction wallet_transfer_to_address(
 
 	for (int i = 0; i < balances.size(); i++)
 	{
+		if (balances[i].balance <= 0)
+			continue;
+
 		WithdrawCondition condition = WithdrawCondition(WithdrawWithSignature(from_addr), balances[i].assetId, balances[i].slateId);
 
 		if (i == (balances.size() - 1))
