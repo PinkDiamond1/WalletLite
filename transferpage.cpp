@@ -238,16 +238,8 @@ void TransferPage::walletCheckAddress(QString address)
 			{
 				currencyAssetId = currencyInfo.assetId();
 
-				if (currencyAssetId == 0)
-				{
-					auto from_address = DataMgr::getInstance()->getAccountAddr(accountName);
-					DataMgr::getInstance()->walletGetAddressBalances(from_address);
-				}
-				else
-				{
-					DataMgr::getInstance()->walletTransferToAddressWithId(amount_text, currencyAssetId, accountName, toAddressText, "");
-					qDebug() << "walletTransferToAddressWithId == " + accountName;
-				}
+				auto from_address = DataMgr::getInstance()->getAccountAddr(accountName);
+				DataMgr::getInstance()->walletGetAddressBalances(from_address);
 				
                 showWaitingPage();
 			}

@@ -17,20 +17,13 @@ namespace blockchain {
                       string& sub_account);
 
     QString signedtransaction_to_json(const SignedTransaction &trx);
-    SignedTransaction wallet_transfer_to_address(
-            const std::string& amount_to_transfer,
-            int asset_id,
-            const std::string& from_address,
-            const std::string& to_address,
-			const std::string& memo_message);
 
 	SignedTransaction wallet_transfer_to_address(
 		const std::string& amount_to_transfer,
 		int asset_id,
 		const std::string& from_address,
 		const std::string& to_address,
-		const QVector<BalanceInfo>& balances,
-		int& signatures_count);
+		const QVector<BalanceInfo>& balances);
 
     SignedTransaction call_contract(const string& caller,
                                    const ContractIdType contract,

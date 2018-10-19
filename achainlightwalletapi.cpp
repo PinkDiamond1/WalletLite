@@ -80,74 +80,12 @@ fc::optional<fc::ecc::private_key> wif_to_key(const std::string& wif_key)
 }
 
 SignedTransaction wallet_transfer_to_address(
-		const std::string& real_amount_to_transfer,
-		int asset_id,
-        const std::string& from_address,
-        const std::string& to_address,
-        const std::string& memo_message)
-{
-        string strToAccount;
-        string strSubAccount;
-        accountsplit(to_address, strToAccount, strSubAccount);
-        Address effective_address;
-        if (Address::is_valid(strToAccount))
-            effective_address = Address(strToAccount);
-        else
-            effective_address = Address(PublicKeyType(strToAccount));
-
-        const int64_t precision = 100000;
-
-        //FC_ASSERT(QString::isNumber(real_amount_to_transfer), "inputed amount is not a number");
-        auto ipos = real_amount_to_transfer.find(".");
-        if (ipos != string::npos)
-        {
-            string str = real_amount_to_transfer.substr(ipos + 1);
-            int64_t precision_input = static_cast<int64_t>(pow(10, str.size()));
-            FC_ASSERT((precision_input <= precision), "Precision is not correct");
-        }
-        double dAmountToTransfer = std::stod(real_amount_to_transfer);
-        ShareType amount_to_transfer = static_cast<ShareType>(floor(dAmountToTransfer * precision + 0.5));
-        Asset asset_to_transfer(amount_to_transfer, asset_id);
-        Address from_addr(from_address);
-        SignedTransaction trx;
-        if (strSubAccount != "")
-		{
-            //trx.from_account = from_address;
-            trx.alp_account = strSubAccount;
-            trx.alp_inport_asset = asset_to_transfer;
-        }
-        const auto required_fees = Asset(1000, 0);
-        const auto required_imessage_fee = Asset(0, 0);
-        if (required_fees.asset_id == asset_to_transfer.asset_id)
-		{
-            WithdrawCondition condition = WithdrawCondition(WithdrawWithSignature(from_addr), 0, 0);
-            trx.withdraw(condition.get_address(), (required_fees + asset_to_transfer + required_imessage_fee).amount);
-        }
-		else
-		{
-            WithdrawCondition condition1 = WithdrawCondition(WithdrawWithSignature(from_addr), asset_id, 0);
-            trx.withdraw(condition1.get_address(), asset_to_transfer.amount);
-            WithdrawCondition condition2 = WithdrawCondition(WithdrawWithSignature(from_addr), 0, 0);
-            trx.withdraw(condition2.get_address(), (required_fees + required_imessage_fee).amount);
-        }
-        trx.deposit(effective_address, asset_to_transfer);
-        trx.expiration = fc::time_point_sec(fc::time_point::now() + fc::hours(1));
-        if (memo_message != "") {
-            trx.AddtionImessage(memo_message);
-        }
-        return trx;
-}
-
-SignedTransaction wallet_transfer_to_address(
 	const std::string& real_amount_to_transfer,
 	int asset_id,
 	const std::string& from_address,
 	const std::string& to_address,
-	const QVector<BalanceInfo>& balances,
-	int& signatures_count)
+	const QVector<BalanceInfo>& balances)
 {
-	FC_ASSERT((asset_id == 0), "asset_id must be 0!");
-
 	string strToAccount;
 	string strSubAccount;
 	accountsplit(to_address, strToAccount, strSubAccount);
@@ -174,14 +112,26 @@ SignedTransaction wallet_transfer_to_address(
 	SignedTransaction trx;
 	if (strSubAccount != "")
 	{
-		//trx.from_account = from_address;
 		trx.alp_account = strSubAccount;
 		trx.alp_inport_asset = asset_to_transfer;
 	}
+
+	ShareType actAmount = 0; //应该扣除的act个数
 	const auto required_fees = Asset(1000, 0);
 	const auto required_imessage_fee = Asset(0, 0);
 
-	ShareType transferAmount = (required_fees + asset_to_transfer + required_imessage_fee).amount;
+	//如果是多资产
+	if (asset_id != 0)
+	{
+		actAmount = (required_fees + required_imessage_fee).amount;
+
+		WithdrawCondition condition = WithdrawCondition(WithdrawWithSignature(from_addr), asset_id, 0);
+		trx.withdraw(condition.get_address(), asset_to_transfer.amount);
+	}
+	else
+	{
+		actAmount = (asset_to_transfer + required_fees + required_imessage_fee).amount;
+	}
 
 	for (int i = 0; i < balances.size(); i++)
 	{
@@ -192,25 +142,25 @@ SignedTransaction wallet_transfer_to_address(
 
 		if (i == (balances.size() - 1))
 		{
-			trx.withdraw(condition.get_address(), transferAmount);
-			signatures_count++;
+			trx.withdraw(condition.get_address(), actAmount);
 			break;
 		}
 		else
 		{
-			if (transferAmount >= balances[i].balance)
+			if (actAmount >= balances[i].balance)
 			{
 				trx.withdraw(condition.get_address(), balances[i].balance);
-				signatures_count++;
-				transferAmount -= balances[i].balance;
+				actAmount -= balances[i].balance;
 			}
 			else
 			{
-				trx.withdraw(condition.get_address(), transferAmount);
-				signatures_count++;
+				trx.withdraw(condition.get_address(), actAmount);
 				break;
 			}
 		}
+
+		if (actAmount <= 0)
+			break;
 	}
 
 	trx.deposit(effective_address, asset_to_transfer);
@@ -392,7 +342,6 @@ QJsonValue signatures_to_json(const vector<fc::ecc::compact_signature>& signs){
     return QJsonValue(array);
 }
 
-
 //only (withdraw/despi/call_contract operations)
 //fc::reflect
 QString signedtransaction_to_json(const SignedTransaction &trx)
@@ -407,10 +356,7 @@ QString signedtransaction_to_json(const SignedTransaction &trx)
     QJsonDocument qdoc;
     qdoc.setObject(transaction);
 
-	QString jsonText =  QString(qdoc.toJson(QJsonDocument::Compact));
-	//jsonText = adjust_transaction_json(jsonText);
-
-	return jsonText;
+	return QString(qdoc.toJson(QJsonDocument::Compact));
 }
 
 }

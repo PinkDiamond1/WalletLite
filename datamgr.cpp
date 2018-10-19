@@ -324,7 +324,7 @@ void DataMgr::walletImportPrivateKey(const QString& wif_key_to_import, const QSt
 
 QString DataMgr::walletExportPrivateKey(const QString& account_name)
 {
-    return DataBase::getInstance()->queryPrivateKey(account_name);;
+    return DataBase::getInstance()->queryPrivateKey(account_name);
 }
 
 bool DataMgr::walletSavePassphrase(const QString& new_password)
@@ -371,29 +371,6 @@ bool DataMgr::walletAccountCreate(QString& account_name)
 }
 
 void DataMgr::walletTransferToAddressWithId(
-    const QString& amount_to_transfer, int asset_id,
-    const QString& from_account_name, const QString& to_address,
-    const QString& memo_message)
-{
-    const std::string str_amount_to_transfer = amount_to_transfer.toStdString();
-    const std::string str_from_address = getInstance()->getAccountAddr(from_account_name).toStdString();
-    const std::string str_to_address = to_address.toStdString();
-    const std::string str_memo_message = memo_message.toStdString();
-
-	auto trx = thinkyoung::blockchain::wallet_transfer_to_address(
-		str_amount_to_transfer,
-		asset_id, str_from_address,
-		str_to_address, str_memo_message);
-
-	if (voteForDelegates && asset_id == 0)
-	{
-		setDelegateSlate(trx);
-	}
-
-	sign_broadcast(from_account_name, trx);
-}
-
-void DataMgr::walletTransferToAddressWithId(
 	const QString& amount_to_transfer,
 	int asset_id,
 	const QString& from_account_name,
@@ -406,50 +383,29 @@ void DataMgr::walletTransferToAddressWithId(
 
 	std::unordered_set<thinkyoung::blockchain::Address> required_signatures;
 
-	int signaturesCount = 0;
-
 	auto trx = thinkyoung::blockchain::wallet_transfer_to_address(
 		str_amount_to_transfer,
 		asset_id, str_from_address,
 		str_to_address,
-		balances,
-		signaturesCount);
+		balances);
 
 	if (voteForDelegates && asset_id == 0)
 	{
 		setDelegateSlate(trx);
 	}
 
-	const QString prikey = DataBase::getInstance()->queryPrivateKey(from_account_name);
-	const auto okey = thinkyoung::blockchain::wif_to_key(prikey.toStdString());
-	const auto chain_id = thinkyoung::blockchain::DigestType(std::string(CHAIN_ID));
-	if (okey.valid())
-	{
-		for (int i = 0; i < signaturesCount; i++)
-			trx.sign(*okey, chain_id);
-	}
-
-	QString broadcast_str = thinkyoung::blockchain::signedtransaction_to_json(trx);
-	DataMgr::getInstance()->broadcast(broadcast_str);
+	sign_broadcast(from_account_name, trx);
 }
 
 void DataMgr::setDelegateSlate(blockchain::SignedTransaction& transaction)
 {
 	std::vector<blockchain::AccountIdType> for_candidates;
-
 	auto delegateAccounts = getVoteDelegateAccounts();
-
-	//const std::unordered_map<int32_t, blockchain::AccountEntry> account_items;
 
 	for (int i = 0; i < delegateAccounts->size(); i++)
 	{
 		for_candidates.push_back(delegateAccounts->at(i).id);
 	}
-
-	//for (const auto& item : delegateAccounts) {
-	//	const auto account_entry = item.second;
-	//	for_candidates.push_back(account_entry.id);
-	//}
 
 	std::random_shuffle(for_candidates.begin(), for_candidates.end());
 

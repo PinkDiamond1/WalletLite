@@ -165,7 +165,6 @@ public:
     bool walletCheckAddress(const QString& address);
     bool walletAccountCreate(QString& account_name);
 	void walletGetAddressBalances(const QString& address);
-	void walletTransferToAddressWithId(const QString& amount_to_transfer, int asset_id, const QString& from_account_name, const QString& to_address, const QString& memo_message);
 	void walletTransferToAddressWithId(const QString& amount_to_transfer, int asset_id, const QString& from_account_name, const QString& to_address, const QVector<BalanceInfo>& balances);
 	void walletAccountRegiste(QString& account_name, QString& pay_from_account, QString& public_data, int delegate_pay_rate, QString& account_type);
 	void walletListAccounts();
