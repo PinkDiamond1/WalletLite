@@ -76,6 +76,8 @@ TransferPage::TransferPage(QString name,QWidget *parent) :
 		"}"
 		).arg(DataMgr::getDataMgr()->getWorkPath()));
 
+	ui->voteCheckBox->setStyleSheet(QString("QCheckBox::indicator{ image:url(%1pic2/checkBox_unchecked.png); }"
+		"QCheckBox::indicator:checked{ image:url(%2pic2/checkBox_checked.png); }").arg(DataMgr::getDataMgr()->getWorkPath()).arg(DataMgr::getDataMgr()->getWorkPath()));
 
 	if (accountName.isEmpty())  // 如果是点击账单跳转
 	{
@@ -115,6 +117,7 @@ TransferPage::TransferPage(QString name,QWidget *parent) :
 		ui->assetComboBox->setCurrentIndex(itemIdx);
 	}
 
+	ui->voteCheckBox->setVisible(currencyName == COMMONASSET);
 
 	QString address = DataMgr::getInstance()->getAccountInfo()->value(accountName).address;
     ui->addressLabel->setText(address);
@@ -364,7 +367,11 @@ void TransferPage::on_sendtoLineEdit_textChanged(const QString &arg1)
     if( ui->sendtoLineEdit->text().isEmpty() || ui->sendtoLineEdit->text().mid(0,3) == "ACT")
 	{
 		ui->tipLabel4->hide();
-		ui->voteCheckBox->show();
+
+		const QString& currencyName = DataMgr::getInstance()->getCurrCurrencyName();
+		if (currencyName == COMMONASSET)
+			ui->voteCheckBox->show();
+
         return;
     }
 
@@ -503,6 +510,8 @@ void TransferPage::on_assetComboBox_currentIndexChanged(int index)
 		setAssertType();
 		showBalance();
 		checkAmountValid(ui->amountLineEdit->text().toDouble());
+
+		ui->voteCheckBox->setVisible(currencyInfo.name == COMMONASSET);
 	}
 }
 

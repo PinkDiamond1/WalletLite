@@ -736,7 +736,10 @@ void Frame::setLanguage(QString language) {
             case 3:
                 showAccountPage();
                 break;
-            case 4:
+			case 4:
+				showDelegatesPage();
+				break;
+            case 5:
 				showQuotationPage();
                 break;
             default:

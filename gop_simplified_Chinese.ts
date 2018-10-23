@@ -104,7 +104,7 @@
         <translation type="obsolete">等待同步</translation>
     </message>
     <message>
-        <location filename="control/accountdetailwidget.cpp" line="162"/>
+        <location filename="control/accountdetailwidget.cpp" line="164"/>
         <source>Copy to clipboard</source>
         <translation type="unfinished">已复制到剪贴板</translation>
     </message>
@@ -369,22 +369,22 @@
         <translation type="obsolete">添加到剪贴板</translation>
     </message>
     <message>
-        <location filename="accountpage.cpp" line="196"/>
+        <location filename="accountpage.cpp" line="195"/>
         <source>Your account has been added successfully. Please save your private key now.</source>
         <translation type="unfinished">添加账户成功，请立即保存私钥</translation>
     </message>
     <message>
-        <location filename="accountpage.cpp" line="357"/>
+        <location filename="accountpage.cpp" line="355"/>
         <source>account</source>
         <translation type="unfinished">账户</translation>
     </message>
     <message>
-        <location filename="accountpage.cpp" line="358"/>
+        <location filename="accountpage.cpp" line="356"/>
         <source>accounts</source>
         <translation type="unfinished">账户</translation>
     </message>
     <message>
-        <location filename="accountpage.cpp" line="362"/>
+        <location filename="accountpage.cpp" line="360"/>
         <source>You currently have %1 %2 and %3 %4 have assets.</source>
         <translation type="unfinished">您目前拥有 %1 个%2，其中有 %3 个%4有资产。</translation>
     </message>
@@ -394,7 +394,7 @@
         <translation type="obsolete">您目前拥有 %1 个账户，其中有 %2 个账户有资产。</translation>
     </message>
     <message>
-        <location filename="accountpage.cpp" line="404"/>
+        <location filename="accountpage.cpp" line="397"/>
         <source>You have successfully hidden the account &quot;%1&quot;.
 You can retrieve the account with the private key in Add Account-Import Account.</source>
         <translation type="unfinished">您已成功隐藏账户“%1”。您可以凭借私钥在添加-导入账户中将该账户找回。</translation>
@@ -733,7 +733,7 @@ permanently registered on the Goopal block and can not be deleted and modified.<
     </message>
     <message>
         <location filename="billpage.ui" line="424"/>
-        <location filename="billpage.cpp" line="248"/>
+        <location filename="billpage.cpp" line="249"/>
         <source>total </source>
         <translation type="unfinished">共</translation>
     </message>
@@ -763,7 +763,7 @@ permanently registered on the Goopal block and can not be deleted and modified.<
         <translation type="unfinished">资产类型:</translation>
     </message>
     <message>
-        <location filename="billpage.cpp" line="248"/>
+        <location filename="billpage.cpp" line="249"/>
         <source> ,</source>
         <translation type="unfinished">条,</translation>
     </message>
@@ -1084,6 +1084,74 @@ better not transfer or upgrade</source>
     </message>
 </context>
 <context>
+    <name>DelegatesPage</name>
+    <message>
+        <location filename="delegatespage.ui" line="20"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="delegatespage.ui" line="64"/>
+        <source>Rank</source>
+        <translation type="unfinished">排序</translation>
+    </message>
+    <message>
+        <location filename="delegatespage.ui" line="85"/>
+        <source>Accounts</source>
+        <translation type="unfinished">帐户</translation>
+    </message>
+    <message>
+        <location filename="delegatespage.ui" line="106"/>
+        <source>Votes</source>
+        <translation type="unfinished">票数</translation>
+    </message>
+    <message>
+        <location filename="delegatespage.ui" line="127"/>
+        <source>Supporting proxies</source>
+        <translation type="unfinished">支持代理</translation>
+    </message>
+    <message>
+        <location filename="delegatespage.ui" line="148"/>
+        <source>Balance</source>
+        <translation type="unfinished">账户余额</translation>
+    </message>
+    <message>
+        <location filename="delegatespage.ui" line="175"/>
+        <source>Next</source>
+        <translation type="unfinished">下一页</translation>
+    </message>
+    <message>
+        <location filename="delegatespage.ui" line="225"/>
+        <source>page</source>
+        <translation type="unfinished">页码</translation>
+    </message>
+    <message>
+        <location filename="delegatespage.ui" line="249"/>
+        <source>--/--</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="delegatespage.ui" line="279"/>
+        <source>Previous</source>
+        <translation type="unfinished">上一页</translation>
+    </message>
+    <message>
+        <location filename="delegatespage.ui" line="328"/>
+        <source>All</source>
+        <translation type="unfinished">全部代理</translation>
+    </message>
+    <message>
+        <location filename="delegatespage.ui" line="358"/>
+        <source>Supporting</source>
+        <translation type="unfinished">支持代理</translation>
+    </message>
+    <message>
+        <location filename="delegatespage.ui" line="401"/>
+        <source>Go</source>
+        <translation type="unfinished">前往</translation>
+    </message>
+</context>
+<context>
     <name>DeleteAccountDialog</name>
     <message>
         <location filename="deleteaccountdialog.ui" line="19"/>
@@ -1259,10 +1327,10 @@ Cover it or not?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="firstlogin.cpp" line="71"/>
-        <location filename="firstlogin.cpp" line="78"/>
-        <location filename="firstlogin.cpp" line="236"/>
-        <location filename="firstlogin.cpp" line="245"/>
+        <location filename="firstlogin.cpp" line="72"/>
+        <location filename="firstlogin.cpp" line="79"/>
+        <location filename="firstlogin.cpp" line="237"/>
+        <location filename="firstlogin.cpp" line="246"/>
         <source>Caps lock opened!</source>
         <translation type="unfinished">大写锁定已打开!</translation>
     </message>
@@ -1271,22 +1339,22 @@ Cover it or not?</source>
         <translation type="obsolete">密码内不能含有空格！</translation>
     </message>
     <message>
-        <location filename="firstlogin.cpp" line="95"/>
+        <location filename="firstlogin.cpp" line="96"/>
         <source>Empty!</source>
         <translation type="unfinished">请设置登录密码</translation>
     </message>
     <message>
-        <location filename="firstlogin.cpp" line="101"/>
+        <location filename="firstlogin.cpp" line="102"/>
         <source>Too short!</source>
         <translation type="unfinished">密码太短了</translation>
     </message>
     <message>
-        <location filename="firstlogin.cpp" line="115"/>
+        <location filename="firstlogin.cpp" line="116"/>
         <source>not consistent!</source>
         <translation type="unfinished">您输入的密码两次不一致</translation>
     </message>
     <message>
-        <location filename="firstlogin.cpp" line="148"/>
+        <location filename="firstlogin.cpp" line="149"/>
         <source>Close Achain Wallet Lite?</source>
         <translation type="unfinished">确定关闭 Achain 钱包</translation>
     </message>
@@ -1299,8 +1367,8 @@ Cover it or not?</source>
         <translation type="obsolete">确定关闭 Goopal 钱包</translation>
     </message>
     <message>
-        <location filename="firstlogin.cpp" line="240"/>
-        <location filename="firstlogin.cpp" line="257"/>
+        <location filename="firstlogin.cpp" line="241"/>
+        <location filename="firstlogin.cpp" line="258"/>
         <source>Caps lock closed!</source>
         <translation type="unfinished">大写锁定已关闭!</translation>
     </message>
@@ -1312,20 +1380,20 @@ Cover it or not?</source>
         <translation type="obsolete">英文</translation>
     </message>
     <message>
-        <location filename="frame.cpp" line="777"/>
-        <location filename="frame.cpp" line="791"/>
+        <location filename="frame.cpp" line="820"/>
+        <location filename="frame.cpp" line="834"/>
         <source>Minimize</source>
         <translation type="unfinished">最小化</translation>
     </message>
     <message>
-        <location filename="frame.cpp" line="783"/>
-        <location filename="frame.cpp" line="793"/>
+        <location filename="frame.cpp" line="826"/>
+        <location filename="frame.cpp" line="836"/>
         <source>Restore</source>
         <translation type="unfinished">恢复</translation>
     </message>
     <message>
-        <location filename="frame.cpp" line="785"/>
-        <location filename="frame.cpp" line="795"/>
+        <location filename="frame.cpp" line="828"/>
+        <location filename="frame.cpp" line="838"/>
         <source>Quit</source>
         <translation type="unfinished">退出</translation>
     </message>
@@ -1338,20 +1406,25 @@ Cover it or not?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="functionbar.cpp" line="22"/>
-        <location filename="functionbar.cpp" line="52"/>
+        <location filename="functionbar.cpp" line="23"/>
+        <location filename="functionbar.cpp" line="56"/>
         <source>Home</source>
         <translation type="unfinished">首页</translation>
     </message>
     <message>
-        <location filename="functionbar.cpp" line="25"/>
-        <location filename="functionbar.cpp" line="53"/>
+        <location filename="functionbar.cpp" line="26"/>
+        <location filename="functionbar.cpp" line="57"/>
         <source>Ledger</source>
         <translation type="unfinished">账单</translation>
     </message>
     <message>
-        <location filename="functionbar.cpp" line="34"/>
-        <location filename="functionbar.cpp" line="56"/>
+        <location filename="functionbar.cpp" line="35"/>
+        <source>Delegate</source>
+        <translation type="unfinished">代理</translation>
+    </message>
+    <message>
+        <location filename="functionbar.cpp" line="38"/>
+        <location filename="functionbar.cpp" line="60"/>
         <source>Markets</source>
         <translation type="unfinished">行情</translation>
     </message>
@@ -1360,8 +1433,8 @@ Cover it or not?</source>
         <translation type="obsolete">账单</translation>
     </message>
     <message>
-        <location filename="functionbar.cpp" line="28"/>
-        <location filename="functionbar.cpp" line="54"/>
+        <location filename="functionbar.cpp" line="29"/>
+        <location filename="functionbar.cpp" line="58"/>
         <source>Transfer</source>
         <oldsource>Transaction</oldsource>
         <translation type="unfinished">转账</translation>
@@ -1376,14 +1449,14 @@ Cover it or not?</source>
         <translation type="obsolete">开发</translation>
     </message>
     <message>
-        <location filename="functionbar.cpp" line="31"/>
-        <location filename="functionbar.cpp" line="55"/>
+        <location filename="functionbar.cpp" line="32"/>
+        <location filename="functionbar.cpp" line="59"/>
         <source>Account</source>
         <oldsource>Accounts</oldsource>
         <translation type="unfinished">账户</translation>
     </message>
     <message>
-        <location filename="functionbar.cpp" line="81"/>
+        <location filename="functionbar.cpp" line="83"/>
         <source>You have no accounts,
 add an account first</source>
         <translation type="unfinished">您当前还没有账户，请添加您的第一个Achain账户</translation>
@@ -1405,7 +1478,7 @@ add an account first</source>
         <translation type="obsolete">等待同步</translation>
     </message>
     <message>
-        <location filename="functionbar.cpp" line="98"/>
+        <location filename="functionbar.cpp" line="99"/>
         <source>No accounts for transfering,
 add an account first</source>
         <translation type="unfinished">暂时没有可以转账的账户，
@@ -1438,34 +1511,34 @@ add an account first</source>
         <translation type="obsolete">文本</translation>
     </message>
     <message>
-        <location filename="homepage.cpp" line="117"/>
+        <location filename="homepage.cpp" line="118"/>
         <source>Total Value</source>
         <translation type="unfinished">总资产</translation>
     </message>
     <message>
-        <location filename="homepage.cpp" line="138"/>
+        <location filename="homepage.cpp" line="139"/>
         <source>Assets</source>
         <translation type="unfinished">资产类型</translation>
     </message>
     <message>
-        <location filename="homepage.cpp" line="144"/>
+        <location filename="homepage.cpp" line="145"/>
         <source>Amount</source>
         <translation type="unfinished">资产数量</translation>
     </message>
     <message>
-        <location filename="homepage.cpp" line="152"/>
-        <location filename="homepage.cpp" line="321"/>
+        <location filename="homepage.cpp" line="153"/>
+        <location filename="homepage.cpp" line="322"/>
         <source>Value</source>
         <translation type="unfinished">资产价值</translation>
     </message>
     <message>
-        <location filename="homepage.cpp" line="158"/>
+        <location filename="homepage.cpp" line="159"/>
         <source>Percentage</source>
         <translation type="unfinished">资产占比</translation>
     </message>
     <message>
-        <location filename="homepage.cpp" line="280"/>
-        <location filename="homepage.cpp" line="287"/>
+        <location filename="homepage.cpp" line="281"/>
+        <location filename="homepage.cpp" line="288"/>
         <source>Others</source>
         <translation type="unfinished">其他</translation>
     </message>
@@ -1541,28 +1614,28 @@ add an account first</source>
         <translation type="obsolete">取消</translation>
     </message>
     <message>
-        <location filename="importdialog.cpp" line="63"/>
+        <location filename="importdialog.cpp" line="65"/>
         <source>Choose your private key file.</source>
         <translation type="unfinished">选择你的私钥文件</translation>
     </message>
     <message>
-        <location filename="importdialog.cpp" line="87"/>
+        <location filename="importdialog.cpp" line="94"/>
         <source>Wrong file path.</source>
         <translation type="unfinished">错误的文件路径</translation>
     </message>
     <message>
-        <location filename="importdialog.cpp" line="129"/>
+        <location filename="importdialog.cpp" line="138"/>
         <source> already existes</source>
         <translation type="unfinished">已经存在</translation>
     </message>
     <message>
-        <location filename="importdialog.cpp" line="142"/>
+        <location filename="importdialog.cpp" line="151"/>
         <source> Import success!    </source>
         <translation type="unfinished">导入成功！</translation>
     </message>
     <message>
-        <location filename="importdialog.cpp" line="105"/>
-        <location filename="importdialog.cpp" line="149"/>
+        <location filename="importdialog.cpp" line="114"/>
+        <location filename="importdialog.cpp" line="158"/>
         <source>Illegal private key!</source>
         <translation type="unfinished">错误的私钥！</translation>
     </message>
@@ -1650,61 +1723,61 @@ add an account first</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="lockpage.cpp" line="65"/>
-        <location filename="lockpage.cpp" line="72"/>
-        <location filename="lockpage.cpp" line="272"/>
-        <location filename="lockpage.cpp" line="281"/>
+        <location filename="lockpage.cpp" line="66"/>
+        <location filename="lockpage.cpp" line="73"/>
+        <location filename="lockpage.cpp" line="273"/>
+        <location filename="lockpage.cpp" line="282"/>
         <source>Caps lock opened!</source>
         <translation type="unfinished">大写锁定已打开!</translation>
     </message>
     <message>
-        <location filename="lockpage.cpp" line="99"/>
+        <location filename="lockpage.cpp" line="100"/>
         <source>Empty!</source>
         <translation type="unfinished">请输入登录密码！</translation>
     </message>
     <message>
-        <location filename="lockpage.cpp" line="104"/>
+        <location filename="lockpage.cpp" line="105"/>
         <source>At least 8 letters!</source>
         <translation type="unfinished">密码输入错误，至少8位</translation>
     </message>
     <message>
-        <location filename="lockpage.cpp" line="236"/>
-        <location filename="lockpage.cpp" line="242"/>
-        <location filename="lockpage.cpp" line="246"/>
-        <location filename="lockpage.cpp" line="256"/>
+        <location filename="lockpage.cpp" line="237"/>
+        <location filename="lockpage.cpp" line="243"/>
+        <location filename="lockpage.cpp" line="247"/>
+        <location filename="lockpage.cpp" line="257"/>
         <source>Please try after </source>
         <translation type="unfinished">钱包由于输入密码错误次数太多而锁定，请在</translation>
     </message>
     <message>
-        <location filename="lockpage.cpp" line="236"/>
+        <location filename="lockpage.cpp" line="237"/>
         <source> hours </source>
         <translation type="unfinished">小时</translation>
     </message>
     <message>
-        <location filename="lockpage.cpp" line="237"/>
-        <location filename="lockpage.cpp" line="242"/>
-        <location filename="lockpage.cpp" line="246"/>
+        <location filename="lockpage.cpp" line="238"/>
+        <location filename="lockpage.cpp" line="243"/>
+        <location filename="lockpage.cpp" line="247"/>
         <source>.  </source>
         <translation type="unfinished">后再尝试</translation>
     </message>
     <message>
-        <location filename="lockpage.cpp" line="237"/>
-        <location filename="lockpage.cpp" line="242"/>
+        <location filename="lockpage.cpp" line="238"/>
+        <location filename="lockpage.cpp" line="243"/>
         <source> minutes </source>
         <translation type="unfinished">分钟</translation>
     </message>
     <message>
-        <location filename="lockpage.cpp" line="246"/>
+        <location filename="lockpage.cpp" line="247"/>
         <source> seconds </source>
         <translation type="unfinished">秒</translation>
     </message>
     <message>
-        <location filename="lockpage.cpp" line="154"/>
+        <location filename="lockpage.cpp" line="155"/>
         <source>Close Achain Wallet Lite?</source>
         <translation type="unfinished">确定关闭 Achain 钱包</translation>
     </message>
     <message>
-        <location filename="lockpage.cpp" line="189"/>
+        <location filename="lockpage.cpp" line="190"/>
         <source>Wrong password!</source>
         <translation type="unfinished">错误的密码！</translation>
     </message>
@@ -1721,8 +1794,8 @@ add an account first</source>
         <translation type="obsolete">锁定剩余</translation>
     </message>
     <message>
-        <location filename="lockpage.cpp" line="276"/>
-        <location filename="lockpage.cpp" line="293"/>
+        <location filename="lockpage.cpp" line="277"/>
+        <location filename="lockpage.cpp" line="294"/>
         <source>Caps lock closed!</source>
         <translation type="unfinished">大写锁定已关闭!</translation>
     </message>
@@ -1854,18 +1927,18 @@ add an account first</source>
         <translation type="obsolete">取消</translation>
     </message>
     <message>
-        <location filename="namedialog.cpp" line="32"/>
+        <location filename="namedialog.cpp" line="34"/>
         <source>Begins with a letter</source>
         <translation type="unfinished">开头必须为字母</translation>
     </message>
     <message>
-        <location filename="namedialog.cpp" line="39"/>
+        <location filename="namedialog.cpp" line="41"/>
         <source>Ok</source>
         <translation type="unfinished">确定</translation>
     </message>
     <message>
         <location filename="namedialog.ui" line="56"/>
-        <location filename="namedialog.cpp" line="44"/>
+        <location filename="namedialog.cpp" line="46"/>
         <source>Cancel</source>
         <translation type="unfinished">取消</translation>
     </message>
@@ -1886,27 +1959,27 @@ add an account first</source>
     </message>
     <message>
         <location filename="namedialog.ui" line="188"/>
-        <location filename="namedialog.cpp" line="48"/>
+        <location filename="namedialog.cpp" line="50"/>
         <source>Check</source>
         <translation type="unfinished">验证</translation>
     </message>
     <message>
-        <location filename="namedialog.cpp" line="81"/>
+        <location filename="namedialog.cpp" line="83"/>
         <source>Max Account num is 50!</source>
         <translation type="unfinished">最多允许创建50个账户！</translation>
     </message>
     <message>
-        <location filename="namedialog.cpp" line="127"/>
+        <location filename="namedialog.cpp" line="129"/>
         <source>More than 63 characters!</source>
         <translation type="unfinished">账户名超过63位！</translation>
     </message>
     <message>
-        <location filename="namedialog.cpp" line="135"/>
+        <location filename="namedialog.cpp" line="137"/>
         <source>This name has been used</source>
         <translation type="unfinished">该账户名已有人使用，请换一个</translation>
     </message>
     <message>
-        <location filename="namedialog.cpp" line="142"/>
+        <location filename="namedialog.cpp" line="144"/>
         <source>You can use this name</source>
         <translation type="unfinished">该账户名可用</translation>
     </message>
@@ -2004,7 +2077,7 @@ add an account first</source>
         <translation type="unfinished">*私钥是您唯一的身份认证，请妥善保管</translation>
     </message>
     <message>
-        <location filename="normallogin.cpp" line="120"/>
+        <location filename="normallogin.cpp" line="122"/>
         <source>At least 8 letters!</source>
         <translation type="unfinished">密码输入错误，至少8位</translation>
     </message>
@@ -2013,51 +2086,51 @@ add an account first</source>
         <translation type="obsolete">RPC 登录失败!</translation>
     </message>
     <message>
-        <location filename="normallogin.cpp" line="67"/>
-        <location filename="normallogin.cpp" line="74"/>
-        <location filename="normallogin.cpp" line="280"/>
-        <location filename="normallogin.cpp" line="289"/>
+        <location filename="normallogin.cpp" line="69"/>
+        <location filename="normallogin.cpp" line="76"/>
+        <location filename="normallogin.cpp" line="282"/>
+        <location filename="normallogin.cpp" line="291"/>
         <source>Caps lock opened!</source>
         <translation type="unfinished">大写锁定已打开!</translation>
     </message>
     <message>
-        <location filename="normallogin.cpp" line="115"/>
+        <location filename="normallogin.cpp" line="117"/>
         <source>Empty!</source>
         <translation type="unfinished">请输入登录密码！</translation>
     </message>
     <message>
-        <location filename="normallogin.cpp" line="160"/>
+        <location filename="normallogin.cpp" line="162"/>
         <source>Close Achain Wallet Lite?</source>
         <translation type="unfinished">确定关闭 Achain 钱包</translation>
     </message>
     <message>
-        <location filename="normallogin.cpp" line="244"/>
-        <location filename="normallogin.cpp" line="250"/>
-        <location filename="normallogin.cpp" line="254"/>
-        <location filename="normallogin.cpp" line="264"/>
+        <location filename="normallogin.cpp" line="246"/>
+        <location filename="normallogin.cpp" line="252"/>
+        <location filename="normallogin.cpp" line="256"/>
+        <location filename="normallogin.cpp" line="266"/>
         <source>Please try after </source>
         <translation type="unfinished">钱包由于输入密码错误次数太多而锁定，请稍后重试</translation>
     </message>
     <message>
-        <location filename="normallogin.cpp" line="244"/>
+        <location filename="normallogin.cpp" line="246"/>
         <source> hours </source>
         <translation type="unfinished">小时</translation>
     </message>
     <message>
-        <location filename="normallogin.cpp" line="245"/>
-        <location filename="normallogin.cpp" line="250"/>
-        <location filename="normallogin.cpp" line="254"/>
+        <location filename="normallogin.cpp" line="247"/>
+        <location filename="normallogin.cpp" line="252"/>
+        <location filename="normallogin.cpp" line="256"/>
         <source>.  </source>
         <translation type="unfinished">后再尝试</translation>
     </message>
     <message>
-        <location filename="normallogin.cpp" line="245"/>
-        <location filename="normallogin.cpp" line="250"/>
+        <location filename="normallogin.cpp" line="247"/>
+        <location filename="normallogin.cpp" line="252"/>
         <source> minutes </source>
         <translation type="unfinished">分钟</translation>
     </message>
     <message>
-        <location filename="normallogin.cpp" line="254"/>
+        <location filename="normallogin.cpp" line="256"/>
         <source> seconds </source>
         <translation type="unfinished">秒</translation>
     </message>
@@ -2066,7 +2139,7 @@ add an account first</source>
         <translation type="obsolete">确定关闭 Goopal 钱包</translation>
     </message>
     <message>
-        <location filename="normallogin.cpp" line="198"/>
+        <location filename="normallogin.cpp" line="200"/>
         <source>Wrong password!</source>
         <translation type="unfinished">错误的密码！</translation>
     </message>
@@ -2083,8 +2156,8 @@ add an account first</source>
         <translation type="obsolete">锁定剩余</translation>
     </message>
     <message>
-        <location filename="normallogin.cpp" line="284"/>
-        <location filename="normallogin.cpp" line="301"/>
+        <location filename="normallogin.cpp" line="286"/>
+        <location filename="normallogin.cpp" line="303"/>
         <source>Caps lock closed!</source>
         <translation type="unfinished">大写锁定已关闭!</translation>
     </message>
@@ -2229,7 +2302,7 @@ add an account first</source>
         <translation type="obsolete">文本</translation>
     </message>
     <message>
-        <location filename="quotationpage.cpp" line="64"/>
+        <location filename="quotationpage.cpp" line="62"/>
         <source>Tihs data comes from %1, only for reference.</source>
         <translation type="unfinished">本数据来自 %1，仅供参考。</translation>
     </message>
@@ -2646,7 +2719,7 @@ update or not?</source>
         <translation type="obsolete">确定删除这个联系人？</translation>
     </message>
     <message>
-        <location filename="singlecontactwidget.cpp" line="143"/>
+        <location filename="singlecontactwidget.cpp" line="141"/>
         <source>No accounts for transfering.</source>
         <translation type="unfinished">没有可以转账的账户</translation>
     </message>
@@ -2828,7 +2901,7 @@ update or not?</source>
     </message>
     <message>
         <location filename="transferpage.ui" line="308"/>
-        <location filename="transferpage.cpp" line="348"/>
+        <location filename="transferpage.cpp" line="373"/>
         <source>Invalid address</source>
         <translation type="unfinished">无效地址</translation>
     </message>
@@ -2842,13 +2915,14 @@ update or not?</source>
         <translation type="obsolete">转账</translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="147"/>
+        <location filename="transferpage.cpp" line="146"/>
         <source>Transfer</source>
         <translation type="unfinished">转账</translation>
     </message>
     <message>
+        <location filename="transferpage.ui" line="449"/>
         <source>Vote</source>
-        <translation type="obsolete">投票</translation>
+        <translation type="unfinished">投票</translation>
     </message>
     <message>
         <source>More than 40 bytes in length</source>
@@ -2869,7 +2943,7 @@ update or not?</source>
         <translation type="obsolete">发送</translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="157"/>
+        <location filename="transferpage.cpp" line="156"/>
         <source>copy to clipboard</source>
         <translation type="unfinished">复制到剪贴板</translation>
     </message>
@@ -2882,23 +2956,23 @@ update or not?</source>
         <translation type="obsolete">费用通常小于参考值，请以实际发生为准</translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="438"/>
-        <location filename="transferpage.cpp" line="441"/>
+        <location filename="transferpage.cpp" line="464"/>
+        <location filename="transferpage.cpp" line="467"/>
         <source>Trx fee is</source>
         <translation type="unfinished">转账费用</translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="278"/>
+        <location filename="transferpage.cpp" line="298"/>
         <source>Input Address.</source>
         <translation type="unfinished">请输入转账地址</translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="285"/>
+        <location filename="transferpage.cpp" line="305"/>
         <source>Please enter the amount.</source>
         <translation type="unfinished">请输入转账金额</translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="198"/>
+        <location filename="transferpage.cpp" line="202"/>
         <source>The amount can not be 0</source>
         <translation type="unfinished">金额不能为0</translation>
     </message>
@@ -2907,7 +2981,7 @@ update or not?</source>
         <translation type="obsolete">手续费不能为0</translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="212"/>
+        <location filename="transferpage.cpp" line="216"/>
         <source>The ACT amount must be greater than 0.05 .</source>
         <translation type="unfinished">ACT余额必须大于等于0.05</translation>
     </message>
@@ -2920,12 +2994,12 @@ update or not?</source>
         <translation type="obsolete">账户名已被注册，请修改账户名！</translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="248"/>
+        <location filename="transferpage.cpp" line="256"/>
         <source>Wrong address!</source>
         <translation type="unfinished">错误的地址！</translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="221"/>
+        <location filename="transferpage.cpp" line="225"/>
         <source>The ACT amount must be greater than 0.01 .</source>
         <translation type="unfinished">ACT余额必须大于等于0.01</translation>
     </message>
@@ -2942,12 +3016,12 @@ update or not?</source>
         <translation type="obsolete">ACT不足</translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="429"/>
+        <location filename="transferpage.cpp" line="455"/>
         <source>Copy to clipboard</source>
         <translation type="unfinished">已复制到剪贴板</translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="442"/>
+        <location filename="transferpage.cpp" line="468"/>
         <source>Poundage is estimated, please refer to the actual occurrence.</source>
         <translation type="unfinished">手续费为预估值，请以实际发生为准</translation>
     </message>
@@ -2964,8 +3038,8 @@ update or not?</source>
         <translation type="obsolete">一个账户不能给自己转账!</translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="357"/>
-        <location filename="transferpage.cpp" line="382"/>
+        <location filename="transferpage.cpp" line="383"/>
+        <location filename="transferpage.cpp" line="408"/>
         <source>The transfer request has been submitted.</source>
         <translation type="unfinished">交易信息已发出，请等待确认</translation>
     </message>
@@ -2986,7 +3060,7 @@ update or not?</source>
         <translation type="obsolete">错误的地址格式</translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="401"/>
+        <location filename="transferpage.cpp" line="427"/>
         <source>Transaction sent failed</source>
         <translation type="unfinished">交易发送失败</translation>
     </message>
@@ -3182,7 +3256,7 @@ name will be permanently registered on the Goopal block and can not be deleted a
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="waitingforsync.cpp" line="77"/>
+        <location filename="waitingforsync.cpp" line="79"/>
         <source>Close Achain Wallet Lite?</source>
         <translation type="unfinished">确定关闭 Achain 钱包</translation>
     </message>
@@ -3197,7 +3271,7 @@ update or not?</source>
 是否更新?</translation>
     </message>
     <message>
-        <location filename="waitingforsync.cpp" line="103"/>
+        <location filename="waitingforsync.cpp" line="105"/>
         <source>Rebuilding... </source>
         <translation type="unfinished">重构区块链中... </translation>
     </message>

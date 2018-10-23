@@ -57,17 +57,17 @@ void DelegatesListDelegate::paint(QPainter *painter, const QStyleOptionViewItem 
 				votesNumStr.insert(0, "0");
 		}
 	}
-	painter->drawText(QRect(390, posY, 200, rectHeight), Qt::AlignLeft | Qt::AlignVCenter, votesNumStr);
+	painter->drawText(QRect(340, posY, 200, rectHeight), Qt::AlignLeft | Qt::AlignVCenter, votesNumStr);
 
 	QString imgPath = DataMgr::getDataMgr()->getWorkPath();
 	bool isVoteDelegate = DataMgr::getDataMgr()->isVoteDelegate(itemData->id);
 	if (isVoteDelegate)
-		imgPath += "pic2/checkBox_checked.png";
+		imgPath += "pic2/star_checked.png";
 	else
-		imgPath += "pic2/checkBox_unchecked.png";
+		imgPath += "pic2/star_unchecked.png";
 
 	QPixmap img(imgPath);
-	itemData->checkboxRect = QRect(590, posY + 13, img.rect().width(), img.rect().height());
+	itemData->checkboxRect = QRect(590, posY + 11, img.rect().width(), img.rect().height());
 	painter->drawPixmap(itemData->checkboxRect, img);
 }
 

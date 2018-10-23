@@ -134,15 +134,17 @@ void AccountDetailWidget::setAccount(QString name) {
     ui->delegateRankLabel->hide();
 }
 
-void AccountDetailWidget::dynamicShow() {
-    show();
-    DynamicMove* dynamicMove = new DynamicMove( this, QPoint(297, 93), 20, 10, this);
-    dynamicMove->start();
+void AccountDetailWidget::dynamicShow()
+{
+	show();
+	DynamicMove* dynamicMove = new DynamicMove(this, QPoint(297, 93), 1000, this);
+	dynamicMove->start();
 }
 
-void AccountDetailWidget::dynamicHide() {
-    DynamicMove* dynamicMove = new DynamicMove( this, QPoint(826, 93), 20, 10, this);
-    connect( dynamicMove, SIGNAL(moveEnd()), this, SLOT(moveEnd()));
+void AccountDetailWidget::dynamicHide()
+{
+	DynamicMove* dynamicMove = new DynamicMove(this, QPoint(826, 93), 1000, this);
+	connect(dynamicMove, SIGNAL(moveEnd()), this, SLOT(moveEnd()));
     dynamicMove->start();
 }
 

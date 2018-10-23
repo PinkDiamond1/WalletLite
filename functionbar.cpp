@@ -10,7 +10,6 @@
 #include <QPainter>
 #include <QDebug>
 
-
 FunctionBar::FunctionBar(QWidget *parent) :
 QWidget(parent),
 ui(new Ui::FunctionBar)
@@ -31,8 +30,8 @@ ui(new Ui::FunctionBar)
 	ui->accountBtn->setPixmap(DataMgr::getDataMgr()->getWorkPath() + "pic2/account_btn.png");
 	ui->accountBtn->setBtnText(tr("Account"));
 
-	ui->delegatesBtn->setPixmap(DataMgr::getDataMgr()->getWorkPath() + "pic2/markets_btn.png");
-	ui->delegatesBtn->setBtnText(tr("Markets"));
+	ui->delegatesBtn->setPixmap(DataMgr::getDataMgr()->getWorkPath() + "pic2/delegate_btn.png");
+	ui->delegatesBtn->setBtnText(tr("Delegate"));
 
 	ui->quotationBtn->setPixmap(DataMgr::getDataMgr()->getWorkPath() + "pic2/markets_btn.png");
 	ui->quotationBtn->setBtnText(tr("Markets"));
@@ -57,6 +56,7 @@ void FunctionBar::retranslator()
 	ui->billBtn->setBtnText(tr("Ledger"));
 	ui->transferBtn->setBtnText(tr("Transfer"));
 	ui->accountBtn->setBtnText(tr("Account"));
+	ui->delegatesBtn->setBtnText(tr("Delegate"));
 	ui->quotationBtn->setBtnText(tr("Markets"));
 
 	ui->versionLabel->setText(ACHAIN_WALLET_VERSION_STR);

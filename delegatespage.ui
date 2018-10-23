@@ -26,9 +26,9 @@
    <property name="geometry">
     <rect>
      <x>146</x>
-     <y>14</y>
+     <y>19</y>
      <width>3</width>
-     <height>27</height>
+     <height>20</height>
     </rect>
    </property>
    <property name="font">
@@ -37,7 +37,7 @@
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(21, 79, 230);</string>
+    <string notr="true">background-color: rgb(187, 187, 187);</string>
    </property>
    <property name="text">
     <string/>
@@ -61,7 +61,7 @@
     <string notr="true">color: rgb(134, 134, 134);</string>
    </property>
    <property name="text">
-    <string>Time</string>
+    <string>Rank</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_11">
@@ -88,7 +88,7 @@
   <widget class="QLabel" name="label_12">
    <property name="geometry">
     <rect>
-     <x>440</x>
+     <x>386</x>
      <y>58</y>
      <width>121</width>
      <height>30</height>
@@ -103,15 +103,15 @@
     <string notr="true">color: rgb(134, 134, 134);</string>
    </property>
    <property name="text">
-    <string>Trx</string>
+    <string>Votes</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_13">
    <property name="geometry">
     <rect>
-     <x>640</x>
+     <x>584</x>
      <y>58</y>
-     <width>111</width>
+     <width>121</width>
      <height>30</height>
     </rect>
    </property>
@@ -124,7 +124,10 @@
     <string notr="true">color: rgb(134, 134, 134);</string>
    </property>
    <property name="text">
-    <string>Fee(ACT)</string>
+    <string>Supporting proxies</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <widget class="QLabel" name="label_14">
@@ -151,7 +154,7 @@
   <widget class="QToolButton" name="nextPageBtn">
    <property name="geometry">
     <rect>
-     <x>470</x>
+     <x>460</x>
      <y>492</y>
      <width>60</width>
      <height>30</height>
@@ -178,10 +181,10 @@
   <widget class="QLineEdit" name="pageLineEdit">
    <property name="geometry">
     <rect>
-     <x>680</x>
-     <y>496</y>
+     <x>645</x>
+     <y>497</y>
      <width>40</width>
-     <height>23</height>
+     <height>20</height>
     </rect>
    </property>
    <property name="font">
@@ -207,7 +210,7 @@
   <widget class="QLabel" name="numberLabel">
    <property name="geometry">
     <rect>
-     <x>610</x>
+     <x>578</x>
      <y>492</y>
      <width>61</width>
      <height>30</height>
@@ -218,8 +221,14 @@
      <family>微软雅黑</family>
     </font>
    </property>
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
+   </property>
    <property name="text">
-    <string>total </string>
+    <string>page</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
    </property>
   </widget>
   <widget class="QLabel" name="pageLabel">
@@ -249,7 +258,7 @@
   <widget class="QToolButton" name="prePageBtn">
    <property name="geometry">
     <rect>
-     <x>300</x>
+     <x>310</x>
      <y>492</y>
      <width>60</width>
      <height>30</height>
@@ -292,16 +301,18 @@
   <widget class="QToolButton" name="allDelegatesBtn">
    <property name="geometry">
     <rect>
-     <x>49</x>
-     <y>11</y>
-     <width>81</width>
-     <height>35</height>
+     <x>33</x>
+     <y>14</y>
+     <width>102</width>
+     <height>30</height>
     </rect>
    </property>
    <property name="font">
     <font>
      <family>微软雅黑</family>
      <pointsize>12</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
     </font>
    </property>
    <property name="cursor">
@@ -317,22 +328,24 @@
     <string notr="true"/>
    </property>
    <property name="text">
-    <string>Previous</string>
+    <string>All</string>
    </property>
   </widget>
   <widget class="QToolButton" name="supportedDelegatesBtn">
    <property name="geometry">
     <rect>
      <x>160</x>
-     <y>12</y>
-     <width>81</width>
-     <height>35</height>
+     <y>14</y>
+     <width>102</width>
+     <height>30</height>
     </rect>
    </property>
    <property name="font">
     <font>
      <family>微软雅黑</family>
      <pointsize>12</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
     </font>
    </property>
    <property name="cursor">
@@ -345,7 +358,7 @@
     <string notr="true"/>
    </property>
    <property name="text">
-    <string>Previous</string>
+    <string>Supporting</string>
    </property>
   </widget>
   <widget class="QListView" name="listView">
@@ -366,10 +379,10 @@ border-right-width:1px;</string>
   <widget class="QToolButton" name="goToBtn">
    <property name="geometry">
     <rect>
-     <x>730</x>
-     <y>492</y>
+     <x>695</x>
+     <y>495</y>
      <width>50</width>
-     <height>30</height>
+     <height>24</height>
     </rect>
    </property>
    <property name="font">
@@ -384,11 +397,32 @@ border-right-width:1px;</string>
     <enum>Qt::NoFocus</enum>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color:rgb(0,118,255);
+    <string notr="true">background-color:rgb(49,189,198);
 border-radius:4px;</string>
    </property>
    <property name="text">
     <string>Go</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="moveLabel">
+   <property name="geometry">
+    <rect>
+     <x>34</x>
+     <y>48</y>
+     <width>100</width>
+     <height>3</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>微软雅黑</family>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(49,189,198);</string>
+   </property>
+   <property name="text">
+    <string/>
    </property>
   </widget>
   <zorder>label_12</zorder>
@@ -407,6 +441,7 @@ border-radius:4px;</string>
   <zorder>supportedDelegatesBtn</zorder>
   <zorder>listView</zorder>
   <zorder>goToBtn</zorder>
+  <zorder>moveLabel</zorder>
  </widget>
  <resources/>
  <connections/>

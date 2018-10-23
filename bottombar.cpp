@@ -211,8 +211,8 @@ void BottomBar::leaveEvent(QEvent *e)
 void BottomBar::dynamicShow()
 {
     if( isMoving)  return;
-    isMoving = true;
-    DynamicMove* dynamicMove = new DynamicMove( this, QPoint(133,540), 20, 10, this);
+	isMoving = true;
+	DynamicMove* dynamicMove = new DynamicMove(this, QPoint(133, 540), 1000, this);
     connect( dynamicMove, SIGNAL(moveEnd()), this, SLOT(moveEnd()));
     dynamicMove->start();
 }
@@ -221,7 +221,7 @@ void BottomBar::dynamicHide()
 {
     if( isMoving)  return;
     isMoving = true;
-    DynamicMove* dynamicMove = new DynamicMove( this, QPoint(133,580), 20, 10, this);
+	DynamicMove* dynamicMove = new DynamicMove(this, QPoint(133, 580), 1000, this);
     connect( dynamicMove, SIGNAL(moveEnd()), this, SLOT(moveEnd()));
     dynamicMove->start();
 }

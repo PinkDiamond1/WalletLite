@@ -9,7 +9,7 @@ class DynamicMove : public QObject
 {
     Q_OBJECT
 public:
-    DynamicMove( QWidget* widget, QPoint destinationPosition, int intervalSecs, int numOfFrames, QWidget* parent = 0);
+	DynamicMove(QWidget* widget, QPoint desPos, int intervalSecs, QWidget* parent = 0);
     ~DynamicMove();
 
     void start();
@@ -23,11 +23,11 @@ signals:
 private:
     QWidget* w;
     QTimer timer;
-    int intervalTime;
-    int number;  // 总帧数
+    int moveTime = 0;
+	int deltaTime = 20;
     QPoint initialPosition;
     QPoint destination;
-    int count;
+    int costTime = 0;
 };
 
 #endif // DYNAMICMOVE_H

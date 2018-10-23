@@ -41,9 +41,9 @@ void FunctionBarBtn::paintEvent(QPaintEvent* e)
 	else
 		painter.fillRect(QRect(2, 2, 130, 69), QColor(255, 255, 255));
 
-	painter.drawPixmap(53, 14, 24, 24, *m_pixmap);
+	painter.drawPixmap(30, 25, 24, 24, *m_pixmap);
 
 	painter.setFont(QFont("Microsoft Yahei", 10));
 	painter.setBrush(QColor(16, 16, 16));
-	painter.drawText(QRect(15, 39, 100, 20), Qt::AlignCenter, btnText);
+	painter.drawText(QRect(38, 28, 100, 20), Qt::AlignCenter, btnText);
 }

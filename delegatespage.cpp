@@ -1,8 +1,9 @@
 #include "delegatespage.h"
 
-#include <QPainter>
-
 #include <functional>
+
+#include <QPainter>
+#include "extra/dynamicmove.h"
 
 #include "ui_delegatespage.h"
 #include "delegateslistmodel.h"
@@ -20,7 +21,7 @@ ui(new Ui::DelegatesPage)
 	ui->setupUi(this);
 	setAutoFillBackground(true);
 
-	ui->allDelegatesBtn->setStyleSheet("QToolButton{color:rgb(21,79,230);border:0px;}");
+	ui->allDelegatesBtn->setStyleSheet("QToolButton{color:rgb(49,189,198);border:0px;}");
 	ui->supportedDelegatesBtn->setStyleSheet("QToolButton{color:rgb(16,16,16);border:0px;}");
 
 	ui->prePageBtn->setStyleSheet("QToolButton:!hover{border:0px;color:#999999;} QToolButton:hover{border:0px;color:#469cfc;}");
@@ -61,10 +62,10 @@ void DelegatesPage::onCheckboxClicked(int accountId)
 	if (DataMgr::getInstance()->isVoteDelegate(accountId))
 	{
 		DataMgr::getInstance()->deleteVoteDelegateAccount(accountId);
-		//if (tabFlag == SUPPORTED_DELEGATES_TAB)
-		//{
-		//	goToSupportedPage(pageNum);
-		//}
+		if (tabFlag == SUPPORTED_DELEGATES_TAB)
+		{
+			goToSupportedPage(pageNum);
+		}
 	}
 	else
 	{
@@ -124,9 +125,10 @@ void DelegatesPage::goToSupportedPage(int num)
 	totalPageNum = totalPageNum == 0 ? 1 : totalPageNum;
 
 	if (num > totalPageNum)
-		return;
+		num = totalPageNum;
 
 	pageNum = num;
+	delegatesListModel->setPageNum(pageNum);
 
 	int startNum = (pageNum - 1) * PAGE_ROW_MAX;
 	int endNum = startNum + PAGE_ROW_MAX;
@@ -157,7 +159,14 @@ void DelegatesPage::on_allDelegatesBtn_clicked()
 {
 	tabFlag = ALL_DELEGATES_TAB;
 
-	ui->allDelegatesBtn->setStyleSheet("QToolButton{color:rgb(21,79,230);border:0px;}");
+	DynamicMove* dynamicMove = new DynamicMove(ui->moveLabel, QPoint(34, 48), 180, this);
+	dynamicMove->start();
+
+	ui->numberLabel->show();
+	ui->pageLineEdit->show();
+	ui->goToBtn->show();
+
+	ui->allDelegatesBtn->setStyleSheet("QToolButton{color:rgb(49,189,198);border:0px;}");
 	ui->supportedDelegatesBtn->setStyleSheet("QToolButton{color:rgb(16,16,16);border:0px;}");
 
 	resetPageNum();
@@ -168,8 +177,15 @@ void DelegatesPage::on_supportedDelegatesBtn_clicked()
 {
 	tabFlag = SUPPORTED_DELEGATES_TAB;
 
+	DynamicMove* dynamicMove = new DynamicMove(ui->moveLabel, QPoint(161, 48), 180, this);
+	dynamicMove->start();
+
+	ui->numberLabel->hide();
+	ui->pageLineEdit->hide();
+	ui->goToBtn->hide();
+
 	ui->allDelegatesBtn->setStyleSheet("QToolButton{color:rgb(16,16,16);border:0px;}");
-	ui->supportedDelegatesBtn->setStyleSheet("QToolButton{color:rgb(21,79,230);border:0px;}");
+	ui->supportedDelegatesBtn->setStyleSheet("QToolButton{color:rgb(49,189,198);border:0px;}");
 
 	resetPageNum();
 	goToSupportedPage(1);
@@ -219,15 +235,18 @@ void DelegatesPage::on_pageLineEdit_textChanged(const QString &arg1)
 		return;
 
 	int num = ui->pageLineEdit->text().toInt();
-	if (num > totalPageNum)
+	if (totalPageNum == 0)
+		ui->pageLineEdit->setText("");
+	else if (num > totalPageNum)
 		ui->pageLineEdit->setText(QString::number(totalPageNum));
-
-	if (num < 1)
+	else if (num < 1)
 		ui->pageLineEdit->setText("1");
 }
 
 void DelegatesPage::showWaitingPage()
 {
+	ui->pageLineEdit->clearFocus();
+
 	if (waitingPage == nullptr)
 	{
 		waitingPage = new WaitingPage(Goopal::getInstance()->mainFrame);
