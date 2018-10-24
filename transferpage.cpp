@@ -118,6 +118,7 @@ TransferPage::TransferPage(QString name,QWidget *parent) :
 	}
 
 	ui->voteCheckBox->setVisible(currencyName == COMMONASSET);
+	ui->help_btn->setVisible(currencyName == COMMONASSET);
 
 	QString address = DataMgr::getInstance()->getAccountInfo()->value(accountName).address;
     ui->addressLabel->setText(address);
@@ -157,6 +158,10 @@ TransferPage::TransferPage(QString name,QWidget *parent) :
     ui->copyBtn->move(ui->addressLabel->x() + ui->addressLabel->text().length() * 7.5 + 18, 140);
 #endif
     ui->copyBtn->setToolTip(tr("copy to clipboard"));
+
+	ui->help_btn->setStyleSheet(QString("QToolButton{background-image:url(%1pic2/helpBtn.png);background-position: center;background-attachment: fixed;background-clip: padding;border-style: flat;}"
+		"QToolButton:hover{background-image:url(%2pic2/helpBtn_hover.png);background-position: center;background-attachment: fixed;background-clip: padding;border-style: flat;}").arg(DataMgr::getDataMgr()->getWorkPath()).arg(DataMgr::getDataMgr()->getWorkPath()));
+	ui->helpTipsLabel->hide();
 
 	inited = true;
 
@@ -370,7 +375,10 @@ void TransferPage::on_sendtoLineEdit_textChanged(const QString &arg1)
 
 		const QString& currencyName = DataMgr::getInstance()->getCurrCurrencyName();
 		if (currencyName == COMMONASSET)
+		{
 			ui->voteCheckBox->show();
+			ui->help_btn->show();
+		}
 
         return;
     }
@@ -380,6 +388,7 @@ void TransferPage::on_sendtoLineEdit_textChanged(const QString &arg1)
         ui->tipLabel4->setText(tr("Invalid address"));
 		ui->tipLabel4->show();
 		ui->voteCheckBox->hide();
+		ui->help_btn->hide();
     }
 }
 
@@ -512,6 +521,7 @@ void TransferPage::on_assetComboBox_currentIndexChanged(int index)
 		checkAmountValid(ui->amountLineEdit->text().toDouble());
 
 		ui->voteCheckBox->setVisible(currencyInfo.name == COMMONASSET);
+		ui->help_btn->setVisible(currencyInfo.name == COMMONASSET);
 	}
 }
 
@@ -519,4 +529,14 @@ void TransferPage::on_voteCheckBox_clicked(bool checked)
 {
 	DataMgr::getInstance()->changeVoteForDelegatesState();
 	ui->voteCheckBox->setChecked(DataMgr::getInstance()->isVoteForDelegates());
+}
+
+void TransferPage::on_help_btn_pressed()
+{
+	ui->helpTipsLabel->show();
+}
+
+void TransferPage::on_help_btn_released()
+{
+	ui->helpTipsLabel->hide();
 }

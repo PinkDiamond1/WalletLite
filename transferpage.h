@@ -52,10 +52,12 @@ private slots:
 	void on_copyBtn_clicked();
 	void on_assetComboBox_currentIndexChanged(int index);
 	void on_voteCheckBox_clicked(bool checked);
+    void on_help_btn_pressed();
+    void on_help_btn_released();
 
     void walletTransferToAddress(bool resp_success, QString id, QString msg);
     void walletCheckAddress(QString address);
-	void onGetAddressBalances(bool success, const QVector<BalanceInfo>& balances);
+    void onGetAddressBalances(bool success, const QVector<BalanceInfo>& balances);
 
 private:
     Ui::TransferPage *ui;

@@ -42,8 +42,9 @@ private slots:
     void on_prePageBtn_clicked();
     void on_nextPageBtn_clicked();
     void on_goToBtn_clicked();
-
     void on_pageLineEdit_textChanged(const QString &arg1);
+    void on_helpBtn_pressed();
+    void on_helpBtn_released();
 
 private:
 	Ui::DelegatesPage* ui;

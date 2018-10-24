@@ -449,6 +449,71 @@
     <string>Vote</string>
    </property>
   </widget>
+  <widget class="QToolButton" name="help_btn">
+   <property name="geometry">
+    <rect>
+     <x>580</x>
+     <y>187</y>
+     <width>14</width>
+     <height>14</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>微软雅黑</family>
+    </font>
+   </property>
+   <property name="cursor">
+    <cursorShape>ArrowCursor</cursorShape>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>14</width>
+     <height>14</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="QLabel" name="helpTipsLabel">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>590</x>
+     <y>120</y>
+     <width>221</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>微软雅黑</family>
+     <pointsize>10</pointsize>
+     <kerning>true</kerning>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:rgb(255,255,255);</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::Box</enum>
+   </property>
+   <property name="text">
+    <string>Check this option to vote on your supported delegates after successful transfer.</string>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
  </widget>
  <tabstops>
   <tabstop>amountLineEdit</tabstop>

@@ -1040,43 +1040,48 @@ This name will be registered in the Goopal blockchain,permanently and immutably.
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="delegatespage.ui" line="148"/>
+        <location filename="delegatespage.ui" line="151"/>
         <source>Balance</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="delegatespage.ui" line="175"/>
+        <location filename="delegatespage.ui" line="178"/>
         <source>Next</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="delegatespage.ui" line="225"/>
+        <location filename="delegatespage.ui" line="228"/>
         <source>page</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="delegatespage.ui" line="249"/>
+        <location filename="delegatespage.ui" line="252"/>
         <source>--/--</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="delegatespage.ui" line="279"/>
+        <location filename="delegatespage.ui" line="282"/>
         <source>Previous</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="delegatespage.ui" line="328"/>
+        <location filename="delegatespage.ui" line="331"/>
         <source>All</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="delegatespage.ui" line="358"/>
+        <location filename="delegatespage.ui" line="361"/>
         <source>Supporting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="delegatespage.ui" line="401"/>
+        <location filename="delegatespage.ui" line="404"/>
         <source>Go</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="delegatespage.ui" line="487"/>
+        <source>Mark the delegates you supported and complete the vote once the transfer is completed.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1305,31 +1310,32 @@ Cover it or not?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="functionbar.cpp" line="23"/>
-        <location filename="functionbar.cpp" line="56"/>
+        <location filename="functionbar.cpp" line="22"/>
+        <location filename="functionbar.cpp" line="55"/>
         <source>Home</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="functionbar.cpp" line="26"/>
-        <location filename="functionbar.cpp" line="57"/>
+        <location filename="functionbar.cpp" line="25"/>
+        <location filename="functionbar.cpp" line="56"/>
         <source>Ledger</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="functionbar.cpp" line="35"/>
+        <location filename="functionbar.cpp" line="34"/>
+        <location filename="functionbar.cpp" line="59"/>
         <source>Delegate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="functionbar.cpp" line="38"/>
+        <location filename="functionbar.cpp" line="37"/>
         <location filename="functionbar.cpp" line="60"/>
         <source>Markets</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="functionbar.cpp" line="29"/>
-        <location filename="functionbar.cpp" line="58"/>
+        <location filename="functionbar.cpp" line="28"/>
+        <location filename="functionbar.cpp" line="57"/>
         <source>Transfer</source>
         <oldsource>Transaction</oldsource>
         <translation type="unfinished"></translation>
@@ -1340,8 +1346,8 @@ Cover it or not?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="functionbar.cpp" line="32"/>
-        <location filename="functionbar.cpp" line="59"/>
+        <location filename="functionbar.cpp" line="31"/>
+        <location filename="functionbar.cpp" line="58"/>
         <source>Account</source>
         <oldsource>Accounts</oldsource>
         <translation type="unfinished"></translation>
@@ -2714,7 +2720,7 @@ add an account first</source>
     </message>
     <message>
         <location filename="transferpage.ui" line="308"/>
-        <location filename="transferpage.cpp" line="373"/>
+        <location filename="transferpage.cpp" line="388"/>
         <source>Invalid address</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2729,7 +2735,12 @@ add an account first</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="146"/>
+        <location filename="transferpage.ui" line="511"/>
+        <source>Check this option to vote on your supported delegates after successful transfer.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="transferpage.cpp" line="150"/>
         <source>Transfer</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2759,64 +2770,64 @@ add an account first</source>
         <translation type="obsolete">More than 40 bytes</translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="156"/>
+        <location filename="transferpage.cpp" line="160"/>
         <source>copy to clipboard</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="202"/>
+        <location filename="transferpage.cpp" line="210"/>
         <source>The amount can not be 0</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="216"/>
+        <location filename="transferpage.cpp" line="224"/>
         <source>The ACT amount must be greater than 0.05 .</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="225"/>
+        <location filename="transferpage.cpp" line="233"/>
         <source>The ACT amount must be greater than 0.01 .</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="383"/>
-        <location filename="transferpage.cpp" line="408"/>
+        <location filename="transferpage.cpp" line="399"/>
+        <location filename="transferpage.cpp" line="424"/>
         <source>The transfer request has been submitted.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="256"/>
+        <location filename="transferpage.cpp" line="264"/>
         <source>Wrong address!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="427"/>
+        <location filename="transferpage.cpp" line="443"/>
         <source>Transaction sent failed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="455"/>
+        <location filename="transferpage.cpp" line="471"/>
         <source>Copy to clipboard</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="468"/>
+        <location filename="transferpage.cpp" line="484"/>
         <source>Poundage is estimated, please refer to the actual occurrence.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="464"/>
-        <location filename="transferpage.cpp" line="467"/>
+        <location filename="transferpage.cpp" line="480"/>
+        <location filename="transferpage.cpp" line="483"/>
         <source>Trx fee is</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="298"/>
+        <location filename="transferpage.cpp" line="306"/>
         <source>Input Address.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="305"/>
+        <location filename="transferpage.cpp" line="313"/>
         <source>Please enter the amount.</source>
         <translation type="unfinished"></translation>
     </message>

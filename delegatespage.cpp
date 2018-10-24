@@ -27,6 +27,10 @@ ui(new Ui::DelegatesPage)
 	ui->prePageBtn->setStyleSheet("QToolButton:!hover{border:0px;color:#999999;} QToolButton:hover{border:0px;color:#469cfc;}");
 	ui->nextPageBtn->setStyleSheet("QToolButton:!hover{border:0px;color:#999999;} QToolButton:hover{border:0px;color:#469cfc;}");
 
+	ui->helpBtn->setStyleSheet(QString("QToolButton{background-image:url(%1pic2/helpBtn.png);background-position: center;background-attachment: fixed;background-clip: padding;border-style: flat;}"
+		"QToolButton:hover{background-image:url(%2pic2/helpBtn_hover.png);background-position: center;background-attachment: fixed;background-clip: padding;border-style: flat;}").arg(DataMgr::getDataMgr()->getWorkPath()).arg(DataMgr::getDataMgr()->getWorkPath()));
+	ui->helpTipsLabel->hide();
+
 	DataMgr::getInstance()->getVoteDelegateAccounts();
 
 	//init list view
@@ -263,4 +267,14 @@ void DelegatesPage::hideWaitingPage()
 		delete waitingPage;
 		waitingPage = nullptr;
 	}
+}
+
+void DelegatesPage::on_helpBtn_pressed()
+{
+	ui->helpTipsLabel->show();
+}
+
+void DelegatesPage::on_helpBtn_released()
+{
+	ui->helpTipsLabel->hide();
 }
