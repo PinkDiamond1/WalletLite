@@ -109,9 +109,9 @@
   <widget class="QLabel" name="label_13">
    <property name="geometry">
     <rect>
-     <x>584</x>
+     <x>568</x>
      <y>58</y>
-     <width>121</width>
+     <width>141</width>
      <height>30</height>
     </rect>
    </property>
@@ -124,7 +124,7 @@
     <string notr="true">color: rgb(134, 134, 134);</string>
    </property>
    <property name="text">
-    <string>Supporting proxies</string>
+    <string>Supporting delegates</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>

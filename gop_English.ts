@@ -1036,7 +1036,8 @@ This name will be registered in the Goopal blockchain,permanently and immutably.
     </message>
     <message>
         <location filename="delegatespage.ui" line="127"/>
-        <source>Supporting proxies</source>
+        <source>Supporting delegates</source>
+        <oldsource>Supporting proxies</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>

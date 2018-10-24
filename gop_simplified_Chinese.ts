@@ -1107,7 +1107,8 @@ better not transfer or upgrade</source>
     </message>
     <message>
         <location filename="delegatespage.ui" line="127"/>
-        <source>Supporting proxies</source>
+        <source>Supporting delegates</source>
+        <oldsource>Supporting proxies</oldsource>
         <translation type="unfinished">支持代理</translation>
     </message>
     <message>
