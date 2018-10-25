@@ -1198,8 +1198,6 @@ void DataMgr::onGetAddressBalancesFinished()
 				balanceInfo.slateId = detailObj.value("condition").toObject().value("slate_id").toString().toULongLong();
 				balanceInfo.owner = detailObj.value("condition").toObject().value("data").toObject().value("owner").toString();
 
-				QString aaa = detailObj.value("balance").toString();
-
 				if (detailObj.value("balance").isString())
 					balanceInfo.balance = detailObj.value("balance").toString().toLongLong();
 				else
